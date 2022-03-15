@@ -1,0 +1,11 @@
+.container-navbar {
+	background-color: gainsboro;
+	display: flex;
+	justify-content: space-between;
+	padding: 2rem;
+}
+.container-menu {
+	display: flex;
+	width: 30%;
+	justify-content: space-around;
+}
