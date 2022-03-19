@@ -2,7 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const dbConfig = require("./app/config/db.config");
 const db = require("./app/models");
-const Role = require("./app/models/role.model");
+const User = require("./app/models/user.model");
+var bcrypt = require("bcryptjs");
 
 const app = express();
 var corsOptions = {
@@ -31,31 +32,19 @@ db.mongoose
 // inital run, if the database is empty, we create important rows in roles collection 
 
 function inital() {
-    Role.estimatedDocumentCount((err, count) => {
+    User.estimatedDocumentCount((err, count) => {
         if (!err && count === 0) {
-            new Role({
-                name: "user"
+            new User({
+                first_name: "admin",
+                last_name: "admin",
+                email: "admin@gmail.com",
+                password: bcrypt.hashSync("admin123", 8),
+                role: "admin"
             }).save(err => {
                 if (err) {
                     console.log("error", err);
                 }
-                console.log("add 'user' to roles collection");
-            });
-            new Role({
-                name: "admin"
-            }).save(err => {
-                if (err) {
-                    console.log("error", err);
-                }
-                console.log("add 'admin' to roles collection");
-            });
-            new Role({
-                name: "pending"
-            }).save(err => {
-                if (err) {
-                    console.log("error", err);
-                }
-                console.log("add 'pending' to roles collection");
+                console.log("add 'admin' to users collection");
             });
         }
     });
