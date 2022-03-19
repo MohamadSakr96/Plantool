@@ -29,6 +29,9 @@ exports.login = (req, res) => {
             res.status(500).send({ message: err });
             return;
         }
+        if (!user) {
+            return res.status(404).send({ message: "User Not found." });
+        }
         var passwordIsValid = bcrypt.compareSync(
             req.body.password,
             user.password
@@ -39,9 +42,26 @@ exports.login = (req, res) => {
                 message: "Invalid Password!"
             });
         }
-        var authorities = [];
-        if (user.Role.length === 0) {
-            
+
+        var token = jwt.sign({ id: user.id }, config.secret, {
+            expiresIn: 86400 // 24 hours
+        });
+
+        if (user.role === "pending") {
+            return res.status(401).send({ 
+                accessToken: null,
+                message: "Your request is being processed!"
+            });
         }
+        
+        res.status(200).send({
+            id: user._id,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            email: user.email,
+            role: user.role,
+            accessToken: token
+        });
+        
     });
 };
