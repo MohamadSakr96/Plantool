@@ -9,16 +9,29 @@ module.exports = function(app) {
         );
         next();
     });
-
+    // admin APIs
+    app.get(
+        "/api/admin/pending",
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.getPendingRequests
+    );
+    app.post(
+        "/api/admin/acceptRequest",
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.acceptRequest
+    );
+    
+    
+    // TEST APIs
     app.get("/api/test/all", controller.allAccess);
     app.get(
         "/api/test/employee",
         [authJwt.verifyToken, authJwt.isEmployee],
         controller.employeeBoard
-      );
+    );
     app.get(
         "/api/test/admin",
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.adminBoard
-      );
+    );
 };
