@@ -11,7 +11,7 @@ import { Team } from './pages/team';
 function App() {
   return (
     <div className="App">
-      <Navbar/>
+      {/* <Navbar/> */}
       <Routes>
         <Route path='/' element={ <Register /> } />
         <Route path='login' element={ <Login /> } />
