@@ -2,10 +2,29 @@
 	background-color: gainsboro;
 	display: flex;
 	justify-content: space-between;
-	padding: 2rem;
+	align-items: center;
+	height: 64px;
+	padding: 0 2rem;
 }
 .container-menu {
 	display: flex;
 	width: 30%;
 	justify-content: space-around;
+}
+.container-profile {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.profile-picture {
+	height: 48px;
+	aspect-ratio: 1;
+	background-color: white;
+	border-radius: 100%;
+	margin-left: 1rem;
+}
+.profile-picture > img {
+	width: 100%;
+	object-fit: cover;
 }
