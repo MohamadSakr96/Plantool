@@ -19,14 +19,14 @@ exports.acceptRequest = async (req, res) => {
         res.status(500).send({ message: e.message });
     }
 };
-// exports.rejectRequest = async (req, res) => {
-//     try {
-//         await User.where("role").equals("pending").select("first_name last_name");   
-//         res.status(200).send(pending_users);
-//     } catch (e) {
-//         res.status(500).send({ message: e.message });
-//     }
-// };
+exports.rejectRequest = async (req, res) => {
+    try {
+        await User.deleteOne({ _id: req.body._id });
+        res.status(200).send("Deleted employee request!");
+    } catch (e) {
+        res.status(500).send({ message: e.message });
+    }
+};
 
 
 // test functions 

@@ -20,6 +20,11 @@ module.exports = function(app) {
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.acceptRequest
     );
+    app.post(
+        "/api/admin/rejectRequest",
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.rejectRequest
+    );
     
     
     // TEST APIs
