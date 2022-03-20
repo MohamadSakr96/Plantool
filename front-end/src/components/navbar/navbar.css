@@ -17,25 +17,25 @@ a:hover {
 	cursor: pointer;
 }
 
-.container-menu {
+.container-navbar_menu {
 	display: flex;
 	width: 30%;
 	justify-content: space-around;
 }
-.container-profile {
+.container-navbar_profile {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
 }
 
-.profile-picture {
+.container-navbar_profile-picture {
 	height: 48px;
 	aspect-ratio: 1;
 	background-color: white;
 	border-radius: 100%;
 	margin-left: 1rem;
 }
-.profile-picture > img {
+.container-navbar_profile-picture > img {
 	width: 100%;
 	object-fit: cover;
 }
