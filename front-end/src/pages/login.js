@@ -13,48 +13,53 @@ export const Login = () => {
         <h1 className='title'>Plantool</h1>
       </div>
       <div className='container-login-form'>
-      <Box component="form" sx={{ mt: 3, mr: 2, ml: 2 }}>
-            <Grid container spacing={2}>
-                <Grid item xs={12}>
-                <TextField
-                    required
-                    fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
-                    size="small"
-                />
-                </Grid>
-                <Grid item xs={12}>
-                <TextField
-                    required
-                    fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
-                    autoComplete="new-password"
-                    size="small"
-                />
-                </Grid>
-            </Grid>
-            <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 1 }}
-            >
-                login
-            </Button>
-            <Grid container justifyContent="center">
-                <Grid item sx={{mb: 1}}>
-                <Link to={"/"} variant="body2">
-                  Don't have an account? Register
-                </Link>
-                </Grid>
-            </Grid>
-            </Box>
+      <Box component="form" sx={{ mt: 1, mr: 2, ml: 2 }}>
+        <Grid container justifyContent="flex-start">
+              <Grid item >
+                <h1>Welcome,</h1>
+              </Grid>
+          </Grid>
+          <Grid container spacing={2}>
+              <Grid item xs={12}>
+              <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  size="small"
+              />
+              </Grid>
+              <Grid item xs={12}>
+              <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                  size="small"
+              />
+              </Grid>
+          </Grid>
+          <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 1 }}
+          >
+              login
+          </Button>
+          <Grid container justifyContent="center">
+              <Grid item sx={{mb: 2}}>
+              <Link to={"/"} variant="body2">
+                Don't have an account? Register
+              </Link>
+              </Grid>
+          </Grid>
+          </Box>
       </div>
     </div>
   )
