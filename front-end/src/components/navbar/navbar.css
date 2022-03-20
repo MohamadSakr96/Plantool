@@ -1,11 +1,22 @@
 .container-navbar {
-	background-color: gainsboro;
+	background-color: #4361ee;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	height: 64px;
 	padding: 0 2rem;
 }
+
+.container-navbar a {
+	text-decoration: none;
+	color: white;
+	font-weight: 500;
+}
+
+a:hover {
+	cursor: pointer;
+}
+
 .container-menu {
 	display: flex;
 	width: 30%;
