@@ -56,7 +56,7 @@ export const Profile = () => {
                       label="first name"
                       name="first_name"
                       autoComplete="first_name"
-                      size="medium"
+                      size="small"
                   />
                   </Grid>
                   <Grid item xs={3} alignSelf="center">
@@ -68,7 +68,7 @@ export const Profile = () => {
                       label="last name"
                       name="last_name"
                       autoComplete="last_name"
-                      size="medium"
+                      size="small"
                   />
                   </Grid>
                   <Grid item xs={3} alignSelf="center">
@@ -80,7 +80,7 @@ export const Profile = () => {
                       label="email"
                       name="email"
                       autoComplete="email"
-                      size="medium"
+                      size="small"
                   />
                   </Grid>
                   
@@ -104,7 +104,7 @@ export const Profile = () => {
                       label="current password"
                       name="current_password"
                       autoComplete="current_password"
-                      size="medium"
+                      size="small"
                   />
                   </Grid>
                   <Grid item xs={3} alignSelf="center">
@@ -116,7 +116,7 @@ export const Profile = () => {
                       label="new password"
                       name="new_password"
                       autoComplete="new_password"
-                      size="medium"
+                      size="small"
                   />
                   </Grid>
                   <Grid item xs={3} alignSelf="center">
@@ -128,7 +128,7 @@ export const Profile = () => {
                       label="confirm password"
                       name="confirm_password"
                       autoComplete="confirm_password"
-                      size="medium"
+                      size="small"
                   />
                   </Grid>
                   
