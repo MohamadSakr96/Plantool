@@ -92,7 +92,49 @@ export const Profile = () => {
             <div className='security_title'>
               <h2>Security</h2>
             </div>
-            <div className='security_form'></div>
+            <div className='security_form'>
+            <Box component="form" sx={{ mt: 4, mr: 2, ml: 2 }}>
+                <Grid container spacing={2}>
+                  <Grid item xs={3} alignSelf="center">
+                    Current Password
+                  </Grid>
+                  <Grid item xs={9}>
+                  <TextField
+                      fullWidth
+                      label="current password"
+                      name="current_password"
+                      autoComplete="current_password"
+                      size="medium"
+                  />
+                  </Grid>
+                  <Grid item xs={3} alignSelf="center">
+                    New Password
+                  </Grid>
+                  <Grid item xs={9}>
+                  <TextField
+                      fullWidth
+                      label="new password"
+                      name="new_password"
+                      autoComplete="new_password"
+                      size="medium"
+                  />
+                  </Grid>
+                  <Grid item xs={3} alignSelf="center">
+                    Confirm Password
+                  </Grid>
+                  <Grid item xs={9}>
+                  <TextField
+                      fullWidth
+                      label="confirm password"
+                      name="confirm_password"
+                      autoComplete="confirm_password"
+                      size="medium"
+                  />
+                  </Grid>
+                  
+                </Grid>
+              </Box>
+            </div>
           </div>
         </div>
       </div>
