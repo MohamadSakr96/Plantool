@@ -59,7 +59,7 @@ export const Login = () => {
               </Link>
               </Grid>
           </Grid>
-          </Box>
+      </Box>
       </div>
     </div>
   )

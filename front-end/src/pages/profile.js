@@ -1,4 +1,8 @@
 import React from 'react';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import default_profile_pic from "../assets/default_profile_icon.png";
 
 
@@ -7,7 +11,13 @@ export const Profile = () => {
     <div className='container-profile'>
       <div className='container-profile_title'>
         <h1>Profile</h1>
-        <button type='button'>Save</button>
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ mt: 2, mb: 2, pl: 5, pr: 5 }}
+        >
+          Save
+        </Button>
       </div>
       <div className='container-profile_content'>
         <div className='container-profile_card'>
@@ -19,12 +29,71 @@ export const Profile = () => {
             <div className='card-profile_email'>MohamadSakr1996@gmail.com</div>
           </div>
           <div className='container-profile_card-footer'>
-            <button className='card-profile_name' type='button'>Change Profile Picture</button>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 1 }}
+            >
+              Change Profile Picture
+            </Button>
           </div>
         </div>
         <div className='container-profile_information'>
-          <div className='basic-information'> basic info</div>
-          <div className='security'>sicurity</div>
+          <div className='basic-information'>
+            <div className='basic-information_title'>
+              <h2>Basic Information</h2>
+            </div>
+            <div className='basic-information_form'>
+              <Box component="form" sx={{ mt: 4, mr: 2, ml: 2 }}>
+                <Grid container spacing={2}>
+                  <Grid item xs={3} alignSelf="center">
+                    First Name
+                  </Grid>
+                  <Grid item xs={9}>
+                  <TextField
+                      fullWidth
+                      label="first name"
+                      name="first_name"
+                      autoComplete="first_name"
+                      size="medium"
+                  />
+                  </Grid>
+                  <Grid item xs={3} alignSelf="center">
+                    Last Name
+                  </Grid>
+                  <Grid item xs={9}>
+                  <TextField
+                      fullWidth
+                      label="last name"
+                      name="last_name"
+                      autoComplete="last_name"
+                      size="medium"
+                  />
+                  </Grid>
+                  <Grid item xs={3} alignSelf="center">
+                    Email
+                  </Grid>
+                  <Grid item xs={9}>
+                  <TextField
+                      fullWidth
+                      label="email"
+                      name="email"
+                      autoComplete="email"
+                      size="medium"
+                  />
+                  </Grid>
+                  
+                </Grid>
+              </Box>
+            </div>
+          </div>
+          <div className='security'>
+            <div className='security_title'>
+              <h2>Security</h2>
+            </div>
+            <div className='security_form'></div>
+          </div>
         </div>
       </div>
     </div>

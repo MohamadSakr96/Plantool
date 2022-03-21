@@ -56,6 +56,7 @@ input {
 .container-profile_title {
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: 2rem;
 }
 
 .container-profile_content {
@@ -70,16 +71,10 @@ input {
 	justify-content: space-around;
 	background-color: #e2e6fd;
 	margin: 0 5% 0 0;
+	padding: 2rem 0;
 	flex: 1;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
-}
-.container-profile_information {
-	display: flex;
-	flex-direction: column;
-	flex: 2;
-	height: 400px;
-	background-color: aqua;
 }
 
 .container-profile_card-header {
@@ -100,4 +95,21 @@ input {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.container-profile_information {
+	display: flex;
+	flex-direction: column;
+	flex: 2;
+	margin-left: 5%;
+}
+
+.basic-information,
+.security {
+	display: flex;
+	flex-direction: column;
+}
+.basic-information_title,
+.security_title {
+	border-bottom: 1px solid rgba(67, 97, 238, 0.5);
 }
