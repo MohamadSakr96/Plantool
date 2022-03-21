@@ -52,3 +52,52 @@ input {
 	flex-direction: column;
 	margin: 4rem;
 }
+
+.container-profile_title {
+	display: flex;
+	justify-content: space-between;
+}
+
+.container-profile_content {
+	display: flex;
+	width: 100%;
+}
+
+.container-profile_card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	background-color: #e2e6fd;
+	margin: 0 5% 0 0;
+	flex: 1;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+}
+.container-profile_information {
+	display: flex;
+	flex-direction: column;
+	flex: 2;
+	height: 400px;
+	background-color: aqua;
+}
+
+.container-profile_card-header {
+	display: flex;
+	place-content: center;
+	height: 164px;
+	width: 164px;
+	border: 2px solid #4361ee;
+	background-color: white;
+	border-radius: 100%;
+}
+.container-profile_card-header > img {
+	width: 90%;
+	object-fit: cover;
+}
+
+.container-profile_card-body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
