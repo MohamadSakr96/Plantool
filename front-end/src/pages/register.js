@@ -14,10 +14,25 @@ export const Register = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        for (let val of data.values()){
-            console.log(val);
-        }
+        
+        createUser(data);
     };
+
+    function createUser(object) {
+        axios.post(registerURL, {
+            first_name: object.get('first_name'),  
+            last_name: object.get('last_name'),  
+            email: object.get('email'),
+            password: object.get('password'),
+            password_confirmation: object.get('password_confirmation'),
+        })
+        .then((res) => {
+            console.log(res.data.message);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }
 
     return (
         <div className='container-register'>
