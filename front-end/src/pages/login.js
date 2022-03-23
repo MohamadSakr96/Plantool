@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { authenticate } from '../features/auth/authSlice';
 
 export const Login = () => {
-  const loginUrl = 'http://localhost:8081/api/auth/login';
+  const loginUrl = 'http://localhost:8080/api/auth/login';
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {

@@ -7,7 +7,16 @@ var bcrypt = require("bcryptjs");
 
 const app = express();
 var corsOptions = {
-    origin: "http://localhost:8081"
+    origin: '*',
+
+    methods: [
+        'GET',
+        'POST',
+    ],
+
+    allowedHeaders: [
+        'Content-Type',
+    ]
 };
 
 // parse requests
