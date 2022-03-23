@@ -26,7 +26,8 @@ export const Login = () => {
       password: object.get('password')
     })
     .then((res) => {
-      console.log(res);
+      localStorage.setItem('user', JSON.stringify(res.data));
+      dispatch(authenticate());
     })
     .catch((err) => {
       console.log(err.message);
