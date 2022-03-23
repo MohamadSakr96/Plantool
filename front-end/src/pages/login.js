@@ -10,18 +10,28 @@ import { useDispatch } from 'react-redux';
 import { authenticate } from '../features/auth/authSlice';
 
 export const Login = () => {
-
+  const loginUrl = 'http://localhost:8081/api/auth/login';
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    for (var value of data.values()) {
-      console.log(value);
-   }
-    // loginUser(data);
+
+    loginUser(data);
   };
 
+  function loginUser(object) {
+    axios.post(loginUrl ,{
+      email: object.get('email'),
+      password: object.get('password')
+    })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+  }
 
 
   return (
