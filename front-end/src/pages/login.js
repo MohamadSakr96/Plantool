@@ -5,18 +5,35 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { authenticate } from '../features/auth/authSlice';
 
 export const Login = () => {
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    for (var value of data.values()) {
+      console.log(value);
+   }
+    // loginUser(data);
+  };
+
+
+
   return (
     <div className='container-login'>
       <div className='container-title'>
         <h1 className='title'>Plantool</h1>
       </div>
       <div className='container-login-form'>
-      <Box component="form" sx={{ mt: 1, mr: 2, ml: 2 }}>
+      <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1, mr: 2, ml: 2 }}>
         <Grid container justifyContent="flex-start">
               <Grid item >
-                <h1>Welcome,</h1>
+                <h1>Welcome</h1>
               </Grid>
           </Grid>
           <Grid container spacing={2}>
