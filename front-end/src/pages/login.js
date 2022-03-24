@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { authenticate } from '../features/auth/authSlice';
@@ -28,6 +28,7 @@ export const Login = () => {
     .then((res) => {
       localStorage.setItem('user', JSON.stringify(res.data));
       dispatch(authenticate());
+      return ( <Navigate to={"/"} />);
     })
     .catch((err) => {
       console.log(err.message);
