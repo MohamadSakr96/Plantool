@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Navbar } from './components/navbar/navbar';
+import { Layout } from './components/layout/layout';
 import { Login } from './pages/login';
 import { Planning } from './pages/planning';
 import { Profile } from './pages/profile';
@@ -11,16 +11,16 @@ import { Team } from './pages/team';
 function App() {
   return (
     <div className="App">
-      <Navbar/>
       <Routes>
-        <Route path='/' element={ <Register /> } />
+        <Route path='register' element={ <Register /> } />
         <Route path='login' element={ <Login /> } />
-
-        <Route path='planning' element={ <Planning /> } />
-        <Route path='team' element={ <Team /> } />
-        <Route path='projects' element={ <Projects /> } />
-        <Route path='stats' element={ <Stats /> } />
-        <Route path='profile' element={ <Profile /> } />
+        <Route path='/' element={ <Layout /> }>
+          <Route path='planning' element={ <Planning /> } />
+          <Route path='team' element={ <Team /> } />
+          <Route path='projects' element={ <Projects /> } />
+          <Route path='stats' element={ <Stats /> } />
+          <Route path='profile' element={ <Profile /> } />
+        </Route>
       </Routes>
     </div>
   );

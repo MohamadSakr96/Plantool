@@ -82,7 +82,7 @@ export const Login = () => {
           </Button>
           <Grid container justifyContent="center">
               <Grid item sx={{mb: 2}}>
-              <Link to={"/"} variant="body2">
+              <Link to={"/register"} variant="body2">
                 Don't have an account? Register
               </Link>
               </Grid>
