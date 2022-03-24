@@ -3,13 +3,13 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { Link } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from "react-router-dom";
 import axios from 'axios';
 
 export const Register = () => {
 
     const registerURL = 'http://localhost:8080/api/auth/register';
+    const [redirect, setRedirect] = useState(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -28,11 +28,15 @@ export const Register = () => {
         })
         .then((res) => {
             console.log(res.data.message);
-            return(<Navigate to={"/login"} />);
+            setRedirect(true);
         })
         .catch((err) => {
             console.log(err);
         });
+    }
+
+    if (redirect) {
+        return <Navigate to={'/login'}/>;
     }
 
     return (
