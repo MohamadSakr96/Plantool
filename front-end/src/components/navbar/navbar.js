@@ -31,7 +31,7 @@ export const Navbar = () => {
         {menu}
         <Link to='profile'>
           <div className='container-navbar_profile'>
-            <div className='container-navbar_profile-name'>Mohamad Sakr</div>
+            <div className='container-navbar_profile-name'>{user.first_name + " " + user.last_name}</div>
             <div className='container-navbar_profile-picture'>
               <img src={default_profile_pic} alt="profile pic"/>
             </div>

@@ -4,9 +4,11 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import default_profile_pic from "../assets/default_profile_icon.png";
+import { useSelector } from 'react-redux';
 
 
 export const Profile = () => {
+  const user = useSelector((state) => state.auth.value);
   return (
     <div className='container-profile'>
       <div className='container-profile_title'>
@@ -25,8 +27,8 @@ export const Profile = () => {
             <img src={default_profile_pic} alt="profile pic"/>
           </div>
           <div className='container-profile_card-body'>
-            <div className='card-profile_name'>Mohamad Sakr</div>
-            <div className='card-profile_email'>MohamadSakr1996@gmail.com</div>
+            <div className='card-profile_name'>{user.first_name + " " + user.last_name}</div>
+            <div className='card-profile_email'>{user.email}</div>
           </div>
           <div className='container-profile_card-footer'>
             <Button
