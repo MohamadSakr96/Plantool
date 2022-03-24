@@ -11,7 +11,7 @@ export const authSlice = createSlice({
             // doesn't actually mutate the state because it uses the Immer library,
             // which detects changes to a "draft state" and produces a brand new
             // immutable state based off those changes
-            state.value = localStorage.getItem('user'); 
+            state.value = JSON.parse(localStorage.getItem('user')); 
         },
         forget: state => {
             state.value = null
