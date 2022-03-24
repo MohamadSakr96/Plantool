@@ -1,20 +1,34 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './navbar.css';
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import default_profile_pic from "../../assets/default_profile_icon.png";
+import { useSelector } from 'react-redux';
 
 export const Navbar = () => {
-  return (
-    <div className='container-navbar'>
-        <div className='container-navbar_logo'>
-            <Link to='planning'>Plantool</Link>
-        </div>
+  let menu;
+  const user = useSelector((state) => state.auth.value);
+  
+  if (user && user.role !== "pending") {
+    if (user.role === "admin") {
+      menu = (
         <div className='container-navbar_menu'>
             <Link to='planning'>Planning</Link>
             <Link to='team'>Team</Link>
             <Link to='projects'>Projects</Link>
             <Link to='stats'>Stats</Link>
         </div>
+      );
+    }
+  }else {
+    return <Navigate to={'/login'}/>;
+  }
+
+  return (
+    <div className='container-navbar'>
+        <div className='container-navbar_logo'>
+            <Link to='planning'>Plantool</Link>
+        </div>
+        {menu}
         <Link to='profile'>
           <div className='container-navbar_profile'>
             <div className='container-navbar_profile-name'>Mohamad Sakr</div>
