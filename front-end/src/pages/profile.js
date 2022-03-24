@@ -1,18 +1,45 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import default_profile_pic from "../assets/default_profile_icon.png";
 import { useSelector } from 'react-redux';
+import { forget } from '../features/auth/authSlice';
+import { useDispatch } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
 
 export const Profile = () => {
   const user = useSelector((state) => state.auth.value);
+  const dispatch = useDispatch();
+  const [redirect, setRedirect] = useState(false);
+
+  function logout() {
+    localStorage.clear();
+    dispatch(forget());
+    // logout api
+    setRedirect(true);
+  }
+
+  if(redirect) {
+    return <Navigate to={'/login'}/>;
+  }
+
   return (
     <div className='container-profile'>
       <div className='container-profile_title'>
         <h1>Profile</h1>
+        <Button
+          type="button"
+          variant="contained"
+          color="error"
+          sx={{ mt: 2, mb: 2, pl: 5, pr: 5 }}
+
+          onClick={logout}
+        >
+          Logout
+        </Button>
         <Button
           type="submit"
           variant="contained"

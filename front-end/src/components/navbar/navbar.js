@@ -12,7 +12,7 @@ export const Navbar = () => {
     if (user.role === "admin") {
       menu = (
         <div className='container-navbar_menu'>
-            <Link to='planning'>Planning</Link>
+            <Link to='/'>Planning</Link>
             <Link to='team'>Team</Link>
             <Link to='projects'>Projects</Link>
             <Link to='stats'>Stats</Link>
@@ -26,7 +26,7 @@ export const Navbar = () => {
   return (
     <div className='container-navbar'>
         <div className='container-navbar_logo'>
-            <Link to='planning'>Plantool</Link>
+            <Link to='/'>Plantool</Link>
         </div>
         {menu}
         <Link to='profile'>
