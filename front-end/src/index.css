@@ -6,6 +6,10 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.flex {
+	display: flex;
+}
+
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
@@ -50,7 +54,8 @@ input {
 .container-profile,
 .container-team,
 .container-planning,
-.container-projects {
+.container-projects,
+.container-stats {
 	display: flex;
 	flex-direction: column;
 	margin: 4rem;
@@ -59,7 +64,8 @@ input {
 .container-profile_title,
 .container-team_title,
 .container-planning_title,
-.container-projects_title {
+.container-projects_title,
+.container-stats_title {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -67,7 +73,10 @@ input {
 }
 
 .container-profile_content,
-.container-team_content {
+.container-team_content,
+.container-planning_content,
+.container-projects_content,
+.container-stats_content {
 	display: flex;
 	width: 100%;
 }
