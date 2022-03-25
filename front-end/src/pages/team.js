@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import AddIcon from '@mui/icons-material/Add';
 
 
 // Fake data
@@ -25,7 +26,7 @@ export const Team = () => {
     <div className='container-team'>
       <div className='container-team_title'>
         <h1>Team</h1>
-        <div>+</div> 
+        <AddIcon fontSize='large' color='primary' />
       </div>
       <div className='container-team_content'>
         <TableContainer component={Paper}>

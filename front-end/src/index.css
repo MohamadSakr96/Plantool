@@ -48,16 +48,21 @@ input {
 }
 
 .container-profile,
-.container-team {
+.container-team,
+.container-planning,
+.container-projects {
 	display: flex;
 	flex-direction: column;
 	margin: 4rem;
 }
 
 .container-profile_title,
-.container-team_title {
+.container-team_title,
+.container-planning_title,
+.container-projects_title {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	margin-bottom: 2rem;
 }
 
