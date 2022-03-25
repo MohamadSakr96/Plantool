@@ -47,19 +47,22 @@ input {
 	border-radius: 10px;
 }
 
-.container-profile {
+.container-profile,
+.container-team {
 	display: flex;
 	flex-direction: column;
 	margin: 4rem;
 }
 
-.container-profile_title {
+.container-profile_title,
+.container-team_title {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 2rem;
 }
 
-.container-profile_content {
+.container-profile_content,
+.container-team_content {
 	display: flex;
 	width: 100%;
 }
