@@ -7,12 +7,18 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { forget } from '../../features/auth/authSlice';
+import { useDispatch } from 'react-redux';
+
+
 
 export const Navbar = () => {
   let menu, notification;
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.value);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const [redirect, setRedirect] = useState(false);
   
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -20,6 +26,17 @@ export const Navbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  function logout() {
+    localStorage.clear();
+    dispatch(forget());
+    // logout api
+    setRedirect(true);
+  }
+
+  if(redirect) {
+    return <Navigate to={'/login'} replace/>;
+  }
   
   if (user && user.role !== "pending") {
     if (user.role === "admin") {
@@ -80,7 +97,7 @@ export const Navbar = () => {
               </Link>
             </MenuItem>
             <MenuItem 
-            onClick={handleClose}
+            onClick={()=>{handleClose(); logout();}}
             style={{color:"red", minWidth:130}} 
             >
               Logout
