@@ -84,13 +84,11 @@ input {
 .container-stats_subTitle {
 	display: flex;
 }
-.container-stats_subTitle > h3 {
+.container-stats_subTitle > h2 {
 	margin-right: 0.5rem;
 	color: #4361ee;
-	opacity: 0.5;
 }
-.container-stats_subTitle > h3:hover {
-	opacity: 1;
+.container-stats_subTitle > h2:hover {
 	cursor: pointer;
 }
 

@@ -1,0 +1,43 @@
+.container-billability {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	font-size: 1.2rem;
+}
+
+.container-billability_title {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.container-billability_content {
+	display: flex;
+	flex-direction: column;
+}
+.billability_content-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1.6px dashed #cbc6c6;
+	margin: 0.5rem 0;
+}
+.billability_content-item_user {
+	display: flex;
+	align-items: center;
+}
+.billability_content-item_user > div {
+	margin-right: 1rem;
+}
+
+.billability_content-item_user_picture {
+	height: 72px;
+	aspect-ratio: 1;
+	background-color: white;
+	border-radius: 100%;
+	margin-left: 1rem;
+	border: 2px solid #4361ee;
+}
+.billability_content-item_user_picture > img {
+	width: 100%;
+	object-fit: cover;
+}

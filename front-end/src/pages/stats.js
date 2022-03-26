@@ -21,18 +21,18 @@ export const Stats = () => {
         <h1>Stats</h1>
         <div className='flex'>
           <div>
-            <div>Start date</div>
-            <TextField type='date' />
+            <div style={{fontSize: '0.9rem'}}>Start date</div>
+            <TextField sx={{mr: 2}} size='small' type='date' />
           </div>
           <div>
-            <div>End date</div>
-            <TextField type='date' />
+            <div style={{fontSize: '0.9rem'}}>End date</div>
+            <TextField size='small' type='date' />
           </div>
         </div>
       </div>
       <div className='container-stats_subTitle'>
-        <h3 onClick={() => {setStatus(false)}} style ={status ? {opacity: 0.5} : {opacity: 1}}>Billability</h3>
-        <h3 onClick={() => {setStatus(true)}} style ={status ? {opacity: 1} : {opacity: 0.5}}>Projects</h3>
+        <h2 onClick={() => {setStatus(false)}} style ={status ? {opacity: 0.5} : {opacity: 1}}>Billability</h2>
+        <h2 onClick={() => {setStatus(true)}} style ={status ? {opacity: 1} : {opacity: 0.5}}>Projects</h2>
       </div>
       <div className='container-stats_content'>
         <Content/>
