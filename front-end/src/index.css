@@ -18,6 +18,10 @@ input {
 	background-color: #4361EE14 !important;
 }
 
+a {
+	text-decoration: none;
+}
+
 .container-register,
 .container-login {
 	display: flex;
@@ -85,7 +89,7 @@ input {
 	display: flex;
 }
 .container-stats_subTitle > h2 {
-	margin-right: 0.5rem;
+	margin-right: 1rem;
 	color: #4361ee;
 }
 .container-stats_subTitle > h2:hover {
