@@ -9,10 +9,12 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { forget } from '../../features/auth/authSlice';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
 
 
 export const Navbar = () => {
+  const logoutURL = "http://localhost:8080/api/auth/logout";
   let menu, notification;
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.value);
@@ -27,11 +29,17 @@ export const Navbar = () => {
     setAnchorEl(null);
   };
 
-  function logout() {
-    localStorage.clear();
-    dispatch(forget());
-    // logout api
-    setRedirect(true);
+  async function logout() {
+    try {
+      await axios.post(logoutURL, {
+        id: user.id
+      });
+      localStorage.clear();
+      dispatch(forget());
+      setRedirect(true);
+    }catch (err) {
+      console.log(err);
+    }
   }
 
   if(redirect) {
