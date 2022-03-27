@@ -25,6 +25,16 @@ module.exports = function(app) {
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.rejectRequest
     );
+    app.post(
+        "/api/admin/getAllProjects",
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.getAllProjects
+    );
+    app.post(
+        "/api/admin/createProject",
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.createProject
+    );
     
     
     // TEST APIs
