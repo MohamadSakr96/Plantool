@@ -1,6 +1,8 @@
-const mongoose = require("mongoose");
 const User = require("../models/user.model");
+const Project = require("../models/project.model");
 
+// admin functions
+// accept or reject new employees in notification section 
 exports.getPendingRequests = async (req, res) => {
     try {
         const pending_users = await User.where("role").equals("pending").select("first_name last_name");   
@@ -27,6 +29,32 @@ exports.rejectRequest = async (req, res) => {
         res.status(500).send({ message: e.message });
     }
 };
+
+// projects functions
+exports.getAllProjects = async (req, res) => {
+    try {
+        const all_projects = await Project.find();
+        res.status(200).send(all_projects);
+    } catch (e) {
+        res.status(500).send({ message: e.message });
+    }
+};
+exports.createProject = async (req, res) => {
+    try {
+        const project = new Project({
+            name: req.body.name,
+            type: req.body.type,
+            client: req.body.client,
+            value: req.body.value,
+            duration: req.body.duration
+        });
+        await project.save();
+        res.status(200).send({ message: "new project added!" });
+    } catch (e) {
+        res.status(500).send({ message: e.message });
+    }
+};
+
 
 
 // test functions 
