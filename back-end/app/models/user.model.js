@@ -7,7 +7,11 @@ const User = mongoose.model(
         last_name: String,
         email: String,
         password: String,
-        role: String
+        role: String,
+        events: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Event'
+        }]
     })
 );
 

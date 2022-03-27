@@ -55,6 +55,22 @@ exports.createProject = async (req, res) => {
     }
 };
 
+// events functions
+exports.createEvent = async (req, res) => {
+    try {
+        const event = new Event({
+            name: req.body.name,
+            description: req.body.description,
+            start_date: req.body.start_date,
+            end_date: req.body.end_date,
+            user: req.body.user_id
+        });
+        await event.save();
+        res.status(200).send({ message: "new event added!" });
+    } catch (e) {
+        res.status(500).send({ message: e.message });
+    }
+};
 
 
 // test functions 
