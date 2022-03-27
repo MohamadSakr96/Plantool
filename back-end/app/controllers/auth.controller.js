@@ -3,6 +3,7 @@ const db = require("../models");
 const { user: User, refreshToken: RefreshToken } = db;
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
+const { user } = require("../models");
 
 exports.register = (req, res) => {
     const user = new User({
@@ -66,6 +67,15 @@ exports.login = (req, res) => {
         });
     });
 };
+
+exports.logout = async (req, res) => {
+    try {
+        await RefreshToken.deleteMany({user: req.body.id});
+        return res.status(200).json({message: "User is logged out!"});
+    } catch (err) {
+        return res.status(500).send({ message: err });
+    }
+}
 
 exports.refreshToken = async (req, res) => {
     const { refreshToken: requestToken } = req.body;

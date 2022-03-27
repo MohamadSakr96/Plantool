@@ -7,7 +7,6 @@ import { Link, Navigate } from "react-router-dom";
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { authenticate } from '../features/auth/authSlice';
-import { red } from '@mui/material/colors';
 
 export const Login = () => {
   const loginUrl = 'http://localhost:8080/api/auth/login';
