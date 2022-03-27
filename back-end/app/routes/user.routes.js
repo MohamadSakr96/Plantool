@@ -35,6 +35,11 @@ module.exports = function(app) {
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.createProject
     );
+    app.post(
+        "/api/admin/createEvent",
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.createEvent
+    );
     
     
     // TEST APIs

@@ -1,5 +1,6 @@
 const User = require("../models/user.model");
 const Project = require("../models/project.model");
+const Event = require("../models/event.model");
 
 // admin functions
 // accept or reject new employees in notification section 
@@ -65,7 +66,15 @@ exports.createEvent = async (req, res) => {
             end_date: req.body.end_date,
             user: req.body.user_id
         });
-        await event.save();
+        await event.save(async (err, event) => {
+            if (err) {
+                res.status(500).send({ message: e.message });
+            }else {
+                const user = await User.where("_id").equals(req.body.user_id);
+                user[0].events.push(event._id);
+                await user[0].save();
+            }
+        });
         res.status(200).send({ message: "new event added!" });
     } catch (e) {
         res.status(500).send({ message: e.message });
