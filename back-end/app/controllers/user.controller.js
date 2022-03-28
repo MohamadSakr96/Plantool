@@ -81,6 +81,19 @@ exports.createEvent = async (req, res) => {
     }
 };
 
+// Planning page functions
+// getAllUsers
+exports.getAllUsers = async (req, res) => {
+    try {
+        // we are getting all users documents that have role not equale to pending, also populating the
+        // events array for each user.
+        const all_users = await User.find({role: {$ne: 'pending'}}).populate('events');
+        res.status(200).send(all_users);
+    } catch (e) {
+        res.status(500).send({ message: e.message });
+    }
+};
+
 
 // test functions 
 exports.allAccess = (req, res) => {
