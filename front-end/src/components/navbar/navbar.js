@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './navbar.css';
 import { Link, Navigate } from "react-router-dom";
-import default_profile_pic from "../../assets/default_profile_icon.png";
 import { useSelector } from 'react-redux';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Button from '@mui/material/Button';
@@ -84,7 +83,7 @@ export const Navbar = () => {
           >
             <div className='container-navbar_profile-name'>{user.first_name + " " + user.last_name}</div>
             <div className='container-navbar_profile-picture'>
-              <img src={default_profile_pic} alt="profile pic"/>
+              <img src={user.image_path} alt="profile pic"/>
             </div>
           </Button>
           <Menu

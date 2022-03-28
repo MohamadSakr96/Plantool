@@ -3,7 +3,6 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import default_profile_pic from "../assets/default_profile_icon.png";
 import { useSelector } from 'react-redux';
 
 
@@ -25,7 +24,7 @@ export const Profile = () => {
       <div className='container-profile_content'>
         <div className='container-profile_card'>
           <div className='container-profile_card-header'>
-            <img src={default_profile_pic} alt="profile pic"/>
+            <img src={user.image_path} alt="profile pic"/>
           </div>
           <div className='container-profile_card-body'>
             <div className='card-profile_name'>{user.first_name + " " + user.last_name}</div>
