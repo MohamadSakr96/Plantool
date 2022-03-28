@@ -11,7 +11,8 @@ exports.register = (req, res) => {
         last_name: req.body.last_name,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8),
-        role: "pending"
+        role: "pending",
+        image_path: "http://localhost:8080/images/default_profile_icon.png"
     });
     user.save((err, user) => {
         if (err) {
@@ -62,6 +63,7 @@ exports.login = (req, res) => {
             last_name: user.last_name,
             email: user.email,
             role: user.role,
+            image_path: user.image_path,
             accessToken: token,
             refreshToken: refreshToken
         });

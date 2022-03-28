@@ -24,6 +24,9 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// serving images path
+app.use('/images', express.static('images'));
+
 // connection to plantool database
 db.mongoose
     .connect(

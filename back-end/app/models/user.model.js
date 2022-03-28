@@ -8,6 +8,7 @@ const User = mongoose.model(
         email: String,
         password: String,
         role: String,
+        image_path: String,
         events: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Event'
