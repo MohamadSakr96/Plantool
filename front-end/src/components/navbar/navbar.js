@@ -6,9 +6,14 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
 import { forget } from '../../features/auth/authSlice';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { Notification } from '../notification/notification';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
@@ -18,14 +23,21 @@ export const Navbar = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.value);
   const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const open_profile_menu = Boolean(anchorEl);
   const [redirect, setRedirect] = useState(false);
+  const [open_notification, setOpen_notification] = useState(false);
   
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleOpen_notification = () => {
+    setOpen_notification(true);
+  };
+  const handleClose_notification = () => {
+    setOpen_notification(false);
   };
 
   async function logout() {
@@ -57,7 +69,20 @@ export const Navbar = () => {
       );
       notification = (
         <div className='container-navbar_profile-notifications'>
-          <NotificationsIcon style={{color: 'white'}} fontSize='small' sx={{ mr: 2, mt: 0.7}}/>
+          <NotificationsIcon onClick={handleOpen_notification} style={{color: 'white'}} fontSize='small' sx={{ mr: 2, mt: 0.7}}/>
+          <Dialog
+            open={open_notification}
+            onClose={handleClose_notification}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Add New Employee"}
+            </DialogTitle>
+            <DialogContent>
+              <Notification />
+            </DialogContent>
+          </Dialog>
         </div>
       );
     }
@@ -76,9 +101,9 @@ export const Navbar = () => {
           <Button 
           style={{color: 'white', textTransform: 'none'}}
           id="basic-button"
-          aria-controls={open ? 'basic-menu' : undefined}
+          aria-controls={open_profile_menu ? 'basic-menu' : undefined}
           aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
+          aria-expanded={open_profile_menu ? 'true' : undefined}
           onClick={handleClick}
           >
             <div className='container-navbar_profile-name'>{user.first_name + " " + user.last_name}</div>
@@ -89,7 +114,7 @@ export const Navbar = () => {
           <Menu
             id="basic-menu"
             anchorEl={anchorEl}
-            open={open}
+            open={open_profile_menu}
             onClose={handleClose}
             MenuListProps={{
               'aria-labelledby': 'basic-button',
