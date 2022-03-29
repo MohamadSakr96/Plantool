@@ -1,0 +1,20 @@
+.container-notification {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	margin: 1rem auto;
+}
+
+.notification-item {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.notification-item_user,
+.notification-item_action {
+	display: flex;
+	align-items: center;
+}
+.notification-item_action > * {
+	margin: 0 1rem;
+}
