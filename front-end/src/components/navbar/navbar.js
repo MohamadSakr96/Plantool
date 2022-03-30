@@ -13,7 +13,6 @@ import { forget } from '../../features/auth/authSlice';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { Notification } from '../notification/notification';
-import CloseIcon from '@mui/icons-material/Close';
 
 
 
@@ -26,6 +25,12 @@ export const Navbar = () => {
   const open_profile_menu = Boolean(anchorEl);
   const [redirect, setRedirect] = useState(false);
   const [open_notification, setOpen_notification] = useState(false);
+  const [status, setStatus] = useState({
+    planning : true,
+    team : false,
+    projects : false,
+    stats : false,
+  });
   
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -39,6 +44,58 @@ export const Navbar = () => {
   const handleClose_notification = () => {
     setOpen_notification(false);
   };
+
+  const handleLinkClick = (event) => {
+    const name = event.currentTarget.id;
+    if (name === "planning"){
+      setStatus({
+        'planning': true,
+        'team': false,
+        'projects': false,
+        'stats': false,
+      });
+    }
+    if (name === "team"){
+      setStatus({
+        'planning': false,
+        'team': true,
+        'projects': false,
+        'stats': false,
+      });
+    }
+    if (name === "projects"){
+      setStatus({
+        'planning': false,
+        'team': false,
+        'projects': true,
+        'stats': false,
+      });
+    }
+    if (name === "stats"){
+      setStatus({
+        'planning': false,
+        'team': false,
+        'projects': false,
+        'stats': true,
+      });
+    }
+    if (name === "plantool_logo"){
+      setStatus({
+        'planning': true,
+        'team': false,
+        'projects': false,
+        'stats': false,
+      });
+    }
+    if (name === "profile"){
+      setStatus({
+        'planning': false,
+        'team': false,
+        'projects': false,
+        'stats': false,
+      });
+    }
+  }; 
 
   async function logout() {
     try {
@@ -61,15 +118,15 @@ export const Navbar = () => {
     if (user.role === "admin") {
       menu = (
         <div className='container-navbar_menu'>
-            <Link to='/'>Planning</Link>
-            <Link to='team'>Team</Link>
-            <Link to='projects'>Projects</Link>
-            <Link to='stats'>Stats</Link>
+            <Link id="planning" onClick={handleLinkClick} style ={status.planning ? {opacity: 1} : {opacity: 0.7}} to='/'>Planning</Link>
+            <Link id="team" onClick={handleLinkClick} style ={status.team ? {opacity: 1} : {opacity: 0.7}} to='team'>Team</Link>
+            <Link id="projects" onClick={handleLinkClick} style ={status.projects ? {opacity: 1} : {opacity: 0.7}} to='projects'>Projects</Link>
+            <Link id="stats" onClick={handleLinkClick} style ={status.stats ? {opacity: 1} : {opacity: 0.7}} to='stats'>Stats</Link>
         </div>
       );
       notification = (
         <div className='container-navbar_profile-notifications'>
-          <NotificationsIcon onClick={handleOpen_notification} style={{color: 'white'}} fontSize='small' sx={{ mr: 2, mt: 0.7}}/>
+          <NotificationsIcon onClick={handleOpen_notification} style={{color: 'white'}} fontSize='small' sx={{ mr: 2, mt: 0.5}}/>
           <Dialog
             open={open_notification}
             onClose={handleClose_notification}
@@ -93,7 +150,7 @@ export const Navbar = () => {
   return (
     <div className='container-navbar'>
         <div className='container-navbar_logo'>
-            <Link to='/'><h3>Plantool</h3></Link>
+            <Link id='plantool_logo' onClick={handleLinkClick} to='/'><h3>Plantool</h3></Link>
         </div>
         {menu}
         <div className='container-navbar_profile'>
@@ -124,7 +181,7 @@ export const Navbar = () => {
             onClick={handleClose}
             style={{minWidth:130}} 
             >
-              <Link to='profile' style={{color:"black"}}>
+              <Link id='profile' onClick={handleLinkClick} to='profile' style={{color:"black"}}>
                 Profile
               </Link>
             </MenuItem>
