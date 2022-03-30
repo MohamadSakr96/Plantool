@@ -1,4 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import { Team_Members } from '../components/team_members/team_members';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -22,11 +26,33 @@ const rows = [
 ];
 
 export const Team = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose= () => {
+    setOpen(false);
+  };
+
   return (
     <div className='container-team'>
       <div className='container-team_title'>
         <h1>Team</h1>
-        <AddIcon fontSize='large' color='primary' />
+        <AddIcon onClick={handleOpen} fontSize='large' color='primary' />
+        <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Team Members"}
+            </DialogTitle>
+            <DialogContent>
+              <Team_Members />
+            </DialogContent>
+        </Dialog>
       </div>
       <div className='container-team_content'>
         <TableContainer component={Paper}>
