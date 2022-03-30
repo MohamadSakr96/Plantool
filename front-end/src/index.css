@@ -24,6 +24,10 @@ a {
 	text-decoration: none;
 }
 
+.MuiSvgIcon-root:hover {
+	cursor: pointer;
+}
+
 .border_bottom {
 	border-bottom: 1.6px dashed #cbc6c6;
 }
