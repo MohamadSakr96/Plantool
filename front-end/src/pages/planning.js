@@ -6,7 +6,7 @@ export const Planning = () => {
     <div className='container-planning'>
       <div className='container-planning_title'>
         <h1>Planning</h1>
-        <AddIcon fontSize='large' color='primary' />
+        <AddIcon fontSize='large' color='primary'/>
       </div>
     </div>
   )

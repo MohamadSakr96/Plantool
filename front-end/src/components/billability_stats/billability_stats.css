@@ -2,7 +2,8 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	font-size: 1.2rem;
+	font-size: 1rem;
+	font-weight: 500;
 }
 
 .container-billability_title {
@@ -18,8 +19,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	border-bottom: 1.6px dashed #cbc6c6;
-	margin: 0.5rem 0;
+	padding: 0.5rem 0;
 }
 .billability_content-item_user {
 	display: flex;
@@ -30,7 +30,7 @@
 }
 
 .billability_content-item_user_picture {
-	height: 72px;
+	height: 60px;
 	aspect-ratio: 1;
 	background-color: white;
 	border-radius: 100%;

@@ -8,11 +8,11 @@ export const Project_Stats = () => {
           <h1>Overall XX €</h1>
       </div>
       <div className='container-projectStats_content'>
-        <div className='projectStats_content-item'>
-          <div> </div>
+        <div className='projectStats_content-item border_bottom'>
+          <h3 className='content-item_name blue'>Type</h3>
           <div className='projectStats_content-item_data'>
-            <h3>Number</h3>
-            <h3>Value (€)</h3>
+            <h3 className='blue'>Number</h3>
+            <h3 className='blue'>Value (€)</h3>
           </div>
         </div>
         <div className='projectStats_content-item border_bottom'>

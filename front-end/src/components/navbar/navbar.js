@@ -93,7 +93,7 @@ export const Navbar = () => {
   return (
     <div className='container-navbar'>
         <div className='container-navbar_logo'>
-            <Link to='/'>Plantool</Link>
+            <Link to='/'><h3>Plantool</h3></Link>
         </div>
         {menu}
         <div className='container-navbar_profile'>

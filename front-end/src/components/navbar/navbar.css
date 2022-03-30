@@ -11,10 +11,12 @@
 	text-decoration: none;
 	color: white;
 	font-weight: 500;
+	opacity: 0.7;
 }
 
 a:hover {
 	cursor: pointer;
+	opacity: 1;
 }
 
 .container-navbar_menu {
@@ -22,6 +24,7 @@ a:hover {
 	width: 30%;
 	justify-content: space-around;
 }
+
 .container-navbar_profile {
 	display: flex;
 	align-items: center;

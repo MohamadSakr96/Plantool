@@ -2,7 +2,8 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	font-size: 1.2rem;
+	font-size: 1rem;
+	font-weight: 500;
 }
 
 .container-projectStats_title {
@@ -15,6 +16,7 @@
 	flex-direction: column;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
+	background-color: white;
 }
 
 .projectStats_content-item {
@@ -23,20 +25,16 @@
 	align-items: center;
 	padding: 2rem 0;
 }
-.projectStats_content-item > div {
+.projectStats_content-item > * {
 	flex: 1;
 }
 .projectStats_content-item_data {
 	display: flex;
 	justify-content: space-around;
 }
-.projectStats_content-item_data > h3 {
+.blue {
 	color: #4361ee;
-	margin: 0 0 2rem 0;
 }
 .content-item_name {
 	margin-left: 2rem;
-}
-.border_bottom {
-	border-bottom: 1.6px dashed #cbc6c6;
 }

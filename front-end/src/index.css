@@ -4,6 +4,8 @@ body {
 		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-color: #f0f0f0;
+	color: #3d3c3b;
 }
 
 .flex {
@@ -20,6 +22,16 @@ input {
 
 a {
 	text-decoration: none;
+}
+
+.border_bottom {
+	border-bottom: 1.6px dashed #cbc6c6;
+}
+
+.title {
+	font-weight: 600;
+	font-size: 82px;
+	margin-right: 30%;
 }
 
 .container-register,
@@ -62,7 +74,7 @@ a {
 .container-stats {
 	display: flex;
 	flex-direction: column;
-	margin: 4rem;
+	margin: 1.5rem 4rem;
 }
 
 .container-profile_title,
@@ -73,7 +85,7 @@ a {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 2rem;
+	margin-bottom: 0.5rem;
 }
 
 .container-profile_content,

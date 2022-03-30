@@ -9,7 +9,7 @@ export const Billability_Stats = () => {
             <h1>Overall XX%</h1>
         </div>
         <div className='container-billability_content'>
-            <div className='billability_content-item'>
+            <div className='billability_content-item border_bottom'>
                 <div className='billability_content-item_user'>
                     <div className='billability_content-item_user_picture'>
                         <img src={default_profile_pic} alt="profile pic"/>
@@ -18,7 +18,7 @@ export const Billability_Stats = () => {
                 </div>
                 <div className='billability_content-item_data'>XX%</div>
             </div>
-            <div className='billability_content-item'>
+            <div className='billability_content-item border_bottom'>
                 <div className='billability_content-item_user'>
                     <div className='billability_content-item_user_picture'>
                         <img src={default_profile_pic} alt="profile pic"/>
