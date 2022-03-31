@@ -103,6 +103,8 @@ a {
 
 .container-stats_subTitle {
 	display: flex;
+	position: relative;
+	z-index: 1;
 }
 .container-stats_subTitle > h2 {
 	margin-right: 1rem;
