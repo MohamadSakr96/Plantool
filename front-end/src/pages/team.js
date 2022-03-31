@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import { Team_Members } from '../components/team_members/team_members';
 import Table from '@mui/material/Table';
@@ -46,11 +45,8 @@ export const Team = () => {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
-            <DialogTitle id="alert-dialog-title">
-              {"Team Members"}
-            </DialogTitle>
             <DialogContent>
-              <Team_Members />
+              <Team_Members page = {'team'}/>
             </DialogContent>
         </Dialog>
       </div>

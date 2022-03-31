@@ -26,11 +26,8 @@ export const Planning = () => {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
-            <DialogTitle id="alert-dialog-title">
-              {"Team Members"}
-            </DialogTitle>
             <DialogContent>
-              <Team_Members />
+              <Team_Members page = {'planning'}/>
             </DialogContent>
           </Dialog>
       </div>
