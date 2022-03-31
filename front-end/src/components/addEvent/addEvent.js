@@ -40,17 +40,6 @@ export const AddEvent = () => {
             <div className='container-project_form'>
             <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3, mr: 2, ml: 2 }}>
                     <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                        <TextField
-                            required
-                            fullWidth
-                            id="name"
-                            label="project name"
-                            name="name"
-                            autoComplete="given-name"
-                            size="medium"
-                        />
-                        </Grid>
                         <Grid item xs={6}>
                         <FormControl fullWidth>
                             <InputLabel id="select-label-type">Type</InputLabel>
