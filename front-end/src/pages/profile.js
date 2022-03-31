@@ -84,17 +84,16 @@ export const Profile = () => {
                       autoComplete="email"
                       size="small"
                   />
-                  </Grid>
-                  
+                  </Grid>                 
                 </Grid>
               </Box>
             </div>
           </div>
-          <div className='security'>
-            <div className='security_title'>
-              <h2>Security</h2>
+          <div className='privacy'>
+            <div className='privacy_title'>
+              <h2>Private Information </h2>
             </div>
-            <div className='security_form'>
+            <div className='privacy_form'>
             <Box component="form" sx={{ mt: 4, mr: 2, ml: 2 }}>
                 <Grid container spacing={2}>
                   <Grid item xs={3} alignSelf="center">
