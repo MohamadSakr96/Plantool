@@ -25,6 +25,19 @@ a:hover {
 	justify-content: space-around;
 }
 
+.notification_icon {
+	position: relative;
+}
+.red-dot {
+	border-radius: 5px;
+	background: #f70d11;
+	width: 7px;
+	height: 7px;
+	position: absolute;
+	top: 5px;
+	right: 16px;
+}
+
 .container-navbar_profile {
 	display: flex;
 	align-items: center;

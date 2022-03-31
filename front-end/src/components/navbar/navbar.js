@@ -126,7 +126,10 @@ export const Navbar = () => {
       );
       notification = (
         <div className='container-navbar_profile-notifications'>
-          <NotificationsIcon onClick={handleOpen_notification} style={{color: 'white'}} fontSize='small' sx={{ mr: 2, mt: 0.5}}/>
+          <div className='notification_icon'>
+            <NotificationsIcon onClick={handleOpen_notification} style={{color: 'white'}} fontSize='small' sx={{ mr: 2, mt: 0.5}}/>
+            <div className='red-dot'></div>
+          </div>
           <Dialog
             open={open_notification}
             onClose={handleClose_notification}
