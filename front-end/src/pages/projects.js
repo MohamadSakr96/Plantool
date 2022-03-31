@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -7,6 +7,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import AddIcon from '@mui/icons-material/Add';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import { ProjectForm } from '../components/projectForm/projectForm';
 
 // Fake data
 function createData(id, first_name, last_name, entry_date, salary, position, vacation_days) {
@@ -21,11 +24,29 @@ const rows = [
 ];
 
 export const Projects = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose= () => {
+    setOpen(false);
+  };
   return (
     <div className='container-projects'>
       <div className='container-projects_title'>
         <h1>Projects</h1>
-        <AddIcon fontSize='large' color='primary' />
+        <AddIcon onClick={handleOpen} fontSize='large' color='primary' />
+        <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+          <DialogContent>
+            <ProjectForm />
+          </DialogContent>
+        </Dialog>
       </div>
       <div className='container-projects_content'>
         <TableContainer component={Paper}>
