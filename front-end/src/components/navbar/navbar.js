@@ -144,7 +144,7 @@ export const Navbar = () => {
       );
     }
   }else {
-    return <Navigate to={'/login'}/>;
+    return <Navigate to={'/login'} replace/>;
   }
 
   return (

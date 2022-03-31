@@ -59,7 +59,7 @@ export const Planning = () => {
     setOpen(false);
   };
 
-  if (user.role === "admin") {
+  if (user && user.role === "admin") {
     renderButton = <AddIcon onClick={handleOpen} fontSize='large' color='primary'/>;
   }
 
