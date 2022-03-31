@@ -116,7 +116,8 @@ export const ProjectForm = () => {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        sx={{ mt: 3, mb: 1 }}
+                        sx={{ mt: 3, mb: 1, p: 1.5}}
+                        size="large"
                     >
                         Create
                     </Button>

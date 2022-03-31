@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 
-export const AddEvent = () => {
+export const AddEvent = (props) => {
 
     const [type, setType] = useState('');
     const [project, setProject] = useState('');
@@ -28,7 +28,7 @@ export const AddEvent = () => {
     };
 
     const createEvent = (object) => {
-        console.log(object.get("name"));
+        console.log(object.get("start_date"), props.id);
     };
 
 
@@ -83,7 +83,6 @@ export const AddEvent = () => {
                             required
                             fullWidth
                             name="start_date"
-                            label="start_date"
                             type="date"
                             id="start_date"
                             size="medium"
@@ -94,7 +93,6 @@ export const AddEvent = () => {
                             required
                             fullWidth
                             name="end_date"
-                            label="end_date"
                             type="date"
                             id="end_date"
                             size="medium"
@@ -105,7 +103,8 @@ export const AddEvent = () => {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        sx={{ mt: 3, mb: 1 }}
+                        sx={{ mt: 3, mb: 1, p: 1.5}}
+                        size="large"
                     >
                         Create
                     </Button>
