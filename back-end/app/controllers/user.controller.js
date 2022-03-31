@@ -1,20 +1,21 @@
 const User = require("../models/user.model");
 const Project = require("../models/project.model");
 const Event = require("../models/event.model");
+var bcrypt = require("bcryptjs");
 
 // admin/employee functions
 exports.updateProfile = async (req, res) => {
     try {
-        const user = await User.where("_id").equals(req.body._id);
-        user[0] = new User({
+        const update = {
             first_name:  req.body.first_name,
             last_name: req.body.last_name,
             email: req.body.email,
             password: bcrypt.hashSync(req.body.password, 8),
             image_path: "http://localhost:8080/images/default_profile_icon.png"
-        });
-        await user[0].save();
-        res.status(200).send(user[0]);
+        };
+        await User.findOneAndUpdate({_id: req.body._id}, update);
+        
+        res.status(200).send({ message: "Profile successfully Updated!" });
     } catch (e) {
         res.status(500).send({ message: e.message });
     }

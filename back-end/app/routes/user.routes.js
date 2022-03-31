@@ -9,6 +9,14 @@ module.exports = function(app) {
         );
         next();
     });
+
+    //  admin/employee APIs
+    app.post(
+        "/api/admin/updateProfile",
+        [authJwt.verifyToken],
+        controller.updateProfile
+    );
+
     // admin APIs
     app.get(
         "/api/admin/pending",
