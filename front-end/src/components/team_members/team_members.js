@@ -3,6 +3,7 @@ import './team_members.css';
 import AddIcon from '@mui/icons-material/Add';
 import default_picture from '../../assets/default_profile_icon.png';
 import { AddEvent } from '../addEvent/addEvent';
+import { UpdateTeam } from '../updateTeam/updateTeam';
 
 export const Team_Members = (props) => {
     
@@ -78,9 +79,16 @@ export const Team_Members = (props) => {
         </div>
         )
     } else{
-        return (
-            <AddEvent id={open} />
-        )
+        if (props.page === "team"){
+            return (
+                <AddEvent id={open} />
+            )
+        }
+        if (props.page === "planning") {
+            return (
+                <UpdateTeam id={open} />
+            )
+        }
     }
     
 }

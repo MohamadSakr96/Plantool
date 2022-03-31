@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-export const UpdateTeam = () => {
+export const UpdateTeam = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -14,7 +14,7 @@ export const UpdateTeam = () => {
     };
 
     const createEvent = (object) => {
-        console.log(object.get("name"));
+        console.log(object.get("first_name"), props.id);
     };
 
 
