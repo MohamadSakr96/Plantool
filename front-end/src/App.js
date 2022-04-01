@@ -7,22 +7,26 @@ import { Projects } from './pages/projects';
 import { Register } from './pages/register';
 import { Stats } from './pages/stats';
 import { Team } from './pages/team';
+import { AdminRoutes } from './routes/AdminRoutes';
+import { PublicRoutes } from './routes/PublicRoutes';
 
 function App() {
   return (
-    <div className="App">
-      <Routes>
+    <Routes>
+      <Route path='/' element= { <PublicRoutes /> }>
         <Route path='register' element={ <Register /> } />
         <Route path='login' element={ <Login /> } />
-        <Route path='/' element={ <Layout /> }>
-          <Route index element={ <Planning /> } />
+      </Route>
+      <Route path='/' element={ <Layout /> }>
+        <Route index element={ <Planning /> } />
+        <Route path='/' element={ <AdminRoutes/> }>
           <Route path='team' element={ <Team /> } />
           <Route path='projects' element={ <Projects /> } />
           <Route path='stats' element={ <Stats /> } />
-          <Route path='profile' element={ <Profile /> } />
         </Route>
-      </Routes>
-    </div>
+        <Route path='profile' element={ <Profile /> } />
+      </Route>
+    </Routes>
   );
 }
 

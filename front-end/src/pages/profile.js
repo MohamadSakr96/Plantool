@@ -10,7 +10,7 @@ export const Profile = () => {
   const user = useSelector((state) => state.auth.value);
 
   return (
-    <div className='container-profile'>
+    user? <div className='container-profile'>
       <div className='container-profile_title'>
         <h1>Profile</h1>
         <Button
@@ -140,5 +140,6 @@ export const Profile = () => {
         </div>
       </div>
     </div>
+    : <></>
   )
 }
