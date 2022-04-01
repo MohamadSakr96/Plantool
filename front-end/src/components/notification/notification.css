@@ -26,6 +26,7 @@
 }
 
 .notification-item_user img {
-	border: 2px solid #4361ee;
-	border-radius: 100%;
+	width: 100%;
+    object-fit: contain;
+    object-position: center;
 }

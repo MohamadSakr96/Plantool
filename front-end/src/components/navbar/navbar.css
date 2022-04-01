@@ -57,10 +57,13 @@ a:hover {
 	height: 48px;
 	aspect-ratio: 1;
 	background-color: white;
-	border-radius: 100%;
+	border-radius: 50%;
+	border: 2px solid #4361ee;
 	margin-left: 1rem;
+	overflow: hidden;
 }
 .container-navbar_profile-picture > img {
 	width: 100%;
-	object-fit: cover;
+	object-fit: contain;
+	object-position: center;
 }

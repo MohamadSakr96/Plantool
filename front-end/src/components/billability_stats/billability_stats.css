@@ -41,5 +41,6 @@
 }
 .billability_content-item_user_picture > img {
 	width: 100%;
-	object-fit: cover;
+    object-fit: contain;
+    object-position: center;
 }

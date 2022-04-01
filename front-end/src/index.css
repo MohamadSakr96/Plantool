@@ -143,10 +143,12 @@ a {
 	border: 2px solid #4361ee;
 	background-color: white;
 	border-radius: 100%;
+	overflow: hidden;
 }
 .container-profile_card-header > img {
-	width: 90%;
+	width: 100%;
 	object-fit: cover;
+	object-position: center;
 }
 
 .container-profile_card-body {
