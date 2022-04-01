@@ -5,17 +5,10 @@ module.exports = function(app) {
     app.use(function(req, res, next) {
         res.header(
             "Access-Control-Allow-Headers",
-            "x-access-token, Origin, Content-Type, Accept"
+            "x-access-token, Origin, Content-Type, Accept",
         );
         next();
     });
-
-    //  admin/employee APIs
-    app.post(
-        "/api/admin/updateProfile",
-        [authJwt.verifyToken],
-        controller.updateProfile
-    );
 
     // admin APIs
     app.get(
@@ -52,6 +45,19 @@ module.exports = function(app) {
         "/api/admin/getAllUsers",
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.getAllUsers
+    );
+    app.post(
+        "/api/admin/updateProfile",
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.updateProfile
+    );
+
+    // Employee APIs
+
+    app.post(
+        "/api/employee/updateProfile",
+        [authJwt.verifyToken, authJwt.isEmployee],
+        controller.updateProfile
     );
     
     

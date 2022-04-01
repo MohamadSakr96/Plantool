@@ -15,14 +15,25 @@ var corsOptions = {
     ],
 
     allowedHeaders: [
-        'Content-Type',
+        'Content-Type'
     ]
 };
+function setupCORS(req, res, next) {
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-type,Accept,X-Access-Token,X-Key');
+    res.header('Access-Control-Allow-Origin', '*');
+    if (req.method === 'OPTIONS') {
+        res.status(200).end();
+    } else {
+        next();
+    }
+}
+app.all('/*', setupCORS);
 
 // parse requests
-app.use(cors(corsOptions));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(cors(corsOptions));
+app.use(express.json({limit: '10mb'}));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 // serving images path
 app.use('/images', express.static('images'));

@@ -2,22 +2,36 @@ const User = require("../models/user.model");
 const Project = require("../models/project.model");
 const Event = require("../models/event.model");
 var bcrypt = require("bcryptjs");
+const fs = require("fs");
 
 // admin/employee functions
-exports.updateProfile = async (req, res) => {
+exports.updateProfile = async(req, res) => {
     try {
         const update = {
-            first_name:  req.body.first_name,
-            last_name: req.body.last_name,
-            email: req.body.email,
-            password: bcrypt.hashSync(req.body.password, 8),
-            image_path: "http://localhost:8080/images/default_profile_icon.png"
+            // first_name:  req.body.first_name,
+            // last_name: req.body.last_name,
+            // email: req.body.email,
+            // password: 
         };
+        Object.keys(req.body).map((key)=>{
+            if (req.body[key] !== ''){
+                if (key === 'password') {
+                    update[key] = bcrypt.hashSync(req.body[key], 8);
+                }else if (key === "image_path") {
+                    let base64 = req.body[key].split(",")[1];
+                    const buffer = Buffer.from(base64, "base64");
+                    const image = `${Date.now()}`+".jpg";
+                    fs.writeFileSync(`./images/${image}`, buffer);
+                    update[key] = `http://localhost:8080/images/${image}`;
+                }else {
+                    update[key] = req.body[key];
+                }
+            }
+        });
         await User.findOneAndUpdate({_id: req.body._id}, update);
-        
-        res.status(200).send({ message: "Profile successfully Updated!" });
+        res.status(200).send(update);
     } catch (e) {
-        res.status(500).send({ message: e.message });
+        res.status(500).send({ message: e.message});
     }
 };
 
