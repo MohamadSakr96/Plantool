@@ -6,6 +6,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	background-color: #f0f0f0;
 	color: #3d3c3b;
+	box-sizing: border-box;
 }
 
 .flex {

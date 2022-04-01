@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './navbar.css';
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Button from '@mui/material/Button';
@@ -25,12 +25,7 @@ export const Navbar = () => {
   const open_profile_menu = Boolean(anchorEl);
   const [redirect, setRedirect] = useState(false);
   const [open_notification, setOpen_notification] = useState(false);
-  const [status, setStatus] = useState({
-    planning : true,
-    team : false,
-    projects : false,
-    stats : false,
-  });
+  const location = useLocation()
   
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -44,58 +39,6 @@ export const Navbar = () => {
   const handleClose_notification = () => {
     setOpen_notification(false);
   };
-
-  const handleLinkClick = (event) => {
-    const name = event.currentTarget.id;
-    if (name === "planning"){
-      setStatus({
-        'planning': true,
-        'team': false,
-        'projects': false,
-        'stats': false,
-      });
-    }
-    if (name === "team"){
-      setStatus({
-        'planning': false,
-        'team': true,
-        'projects': false,
-        'stats': false,
-      });
-    }
-    if (name === "projects"){
-      setStatus({
-        'planning': false,
-        'team': false,
-        'projects': true,
-        'stats': false,
-      });
-    }
-    if (name === "stats"){
-      setStatus({
-        'planning': false,
-        'team': false,
-        'projects': false,
-        'stats': true,
-      });
-    }
-    if (name === "plantool_logo"){
-      setStatus({
-        'planning': true,
-        'team': false,
-        'projects': false,
-        'stats': false,
-      });
-    }
-    if (name === "profile"){
-      setStatus({
-        'planning': false,
-        'team': false,
-        'projects': false,
-        'stats': false,
-      });
-    }
-  }; 
 
   async function logout() {
     try {
@@ -118,10 +61,10 @@ export const Navbar = () => {
     if (user.role === "admin") {
       menu = (
         <div className='container-navbar_menu'>
-            <Link id="planning" onClick={handleLinkClick} style ={status.planning ? {opacity: 1} : {opacity: 0.7}} to='/'>Planning</Link>
-            <Link id="team" onClick={handleLinkClick} style ={status.team ? {opacity: 1} : {opacity: 0.7}} to='team'>Team</Link>
-            <Link id="projects" onClick={handleLinkClick} style ={status.projects ? {opacity: 1} : {opacity: 0.7}} to='projects'>Projects</Link>
-            <Link id="stats" onClick={handleLinkClick} style ={status.stats ? {opacity: 1} : {opacity: 0.7}} to='stats'>Stats</Link>
+            <Link className={location.pathname === '/'? 'active': ''} to='/'>Planning</Link>
+            <Link className={location.pathname === '/team'? 'active': ''} to='team'>Team</Link>
+            <Link className={location.pathname === '/projects'? 'active': ''} to='projects'>Projects</Link>
+            <Link className={location.pathname === '/stats'? 'active': ''} to='stats'>Stats</Link>
         </div>
       );
       notification = (
@@ -153,7 +96,7 @@ export const Navbar = () => {
   return (
     <div className='container-navbar'>
         <div className='container-navbar_logo'>
-            <Link id='plantool_logo' onClick={handleLinkClick} to='/'><h3>Plantool</h3></Link>
+            <Link id='plantool_logo' to='/'><h3>Plantool</h3></Link>
         </div>
         {menu}
         <div className='container-navbar_profile'>
@@ -184,7 +127,7 @@ export const Navbar = () => {
             onClick={handleClose}
             style={{minWidth:130}} 
             >
-              <Link id='profile' onClick={handleLinkClick} to='profile' style={{color:"black"}}>
+              <Link id='profile' to='profile' style={{color:"black"}}>
                 Profile
               </Link>
             </MenuItem>
