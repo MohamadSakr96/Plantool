@@ -9,7 +9,6 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 
 export const AddEvent = (props) => {
-
     const [type, setType] = useState('');
     const [project, setProject] = useState('');
     

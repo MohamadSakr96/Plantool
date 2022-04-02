@@ -5,7 +5,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import axios from 'axios';
 import {ACCEPT_REQUEST_URL, REJECT_REQUEST_URL} from '../../constants';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateData } from '../../features/admin/updateDataSlice';
 
 
 export const Notification = () => {
@@ -26,7 +25,7 @@ export const Notification = () => {
                     "x-access-token": user.accessToken
                 }
             });
-            dispatch(updateData());
+            // dispatch(updateData());
             console.log("request accepted!");
         } catch (error) {
             console.log(error.message);
@@ -42,7 +41,7 @@ export const Notification = () => {
                     "x-access-token": user.accessToken
                 }
             });
-            dispatch(updateData());
+            // dispatch(updateData());
             console.log("request accepted!");
         } catch (error) {
             console.log(error.message);
@@ -52,7 +51,7 @@ export const Notification = () => {
     return (
     <div className='container-notification'>
         {notification_data.map((user_info, index)=>{
-            return <div key={index} className='notification-item border_bottom'>
+            return <div key={index} className={notification_data.length !== index+1? 'notification-item border_bottom': 'notification-item'}>
                         <div className='notification-item_user'>
                             <div className='container-navbar_profile-picture'>
                                 <img src={user_info["image_path"]} alt="profile pic"/>

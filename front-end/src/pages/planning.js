@@ -87,7 +87,7 @@ export const Planning = () => {
             aria-describedby="alert-dialog-description"
           >
             <DialogContent>
-              <Team_Members page = {'planning'}/>
+              <Team_Members />
             </DialogContent>
           </Dialog>
       </div>
