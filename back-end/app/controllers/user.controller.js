@@ -28,8 +28,12 @@ exports.updateProfile = async(req, res) => {
                 }
             }
         });
-        await User.findOneAndUpdate({_id: req.body._id}, update);
-        res.status(200).send(update);
+        const updated_user = await User.findOneAndUpdate(
+            {_id: req.body._id}, 
+            update, 
+            {returnNewDocument : true }
+        );
+        res.status(200).send(updated_user);
     } catch (e) {
         res.status(500).send({ message: e.message});
     }

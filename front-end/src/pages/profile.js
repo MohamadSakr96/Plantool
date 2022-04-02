@@ -1,16 +1,29 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { authenticate } from '../features/auth/authSlice';
 
 
 export const Profile = () => {
-  const updateURL = 'http://localhost:8080/api/employee/updateProfile';
   const user = useSelector((state) => state.auth.value);
+  let updateURL = `http://localhost:8080/api/admin/updateProfile`;
+
   const [image, setImage] = useState('');
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    if(user) {
+      if(user.role === "admin") {
+        console.log("yo");
+        updateURL = `http://localhost:8080/api/admin/updateProfile`;
+      }
+    }
+  },[user]);
 
   const handleImage = (event) => {
     let file = event.target.files[0];
@@ -27,7 +40,7 @@ export const Profile = () => {
     if (image) {
       data.append("image", image);
     }
-    data.append("_id", user.id);
+    data.append("_id", user._id);
     console.log("handle submit");
     updateUser(data);
   };
@@ -45,8 +58,16 @@ export const Profile = () => {
         headers: {
           "x-access-token": user.accessToken
         }
+      }).then((res) => {
+        let old_data = JSON.parse(localStorage.getItem('user'));
+        Object.keys(old_data).map((key)=> {
+          if(typeof(old_data[key]) === typeof(res.data[key])) {
+            old_data[key] = res.data[key];
+          }
+        });
+        localStorage.setItem('user', JSON.stringify(old_data));
+        dispatch(authenticate());
       });
-      console.log("Profile Updated!");
     }catch (err) {
       console.log(err);
     }
