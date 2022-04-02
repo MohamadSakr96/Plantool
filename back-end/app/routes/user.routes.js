@@ -59,6 +59,11 @@ module.exports = function(app) {
         [authJwt.verifyToken, authJwt.isEmployee],
         controller.updateProfile
     );
+    app.post(
+        "/api/employee/getAllUsers",
+        [authJwt.verifyToken, authJwt.isEmployee],
+        controller.getAllUsers
+    );
     
     
     // TEST APIs
