@@ -29,7 +29,7 @@ export const Navbar = () => {
   const open_profile_menu = Boolean(anchorEl);
   const [redirect, setRedirect] = useState(false);
   const [open_notification, setOpen_notification] = useState(false);
-  const location = useLocation()
+  const location = useLocation();
   
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

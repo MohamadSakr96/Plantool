@@ -3,12 +3,14 @@ import {setupListeners} from "@reduxjs/toolkit/query";
 import authReducer from '../features/auth/authSlice';
 import notificationReducer from '../features/admin/notificationSlice';
 import updateDataReducer from '../features/admin/notificationSlice';
+import getAllUsersInfoReducer from '../features/admin/getAllUsersInfoSlice';
 
 export const store = configureStore({
     reducer: {
         auth: authReducer,
         notification: notificationReducer,
         updateData: updateDataReducer,
+        getAllUsersInfo: getAllUsersInfoReducer,
     },
 })
 

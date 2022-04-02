@@ -4,9 +4,12 @@ import AddIcon from '@mui/icons-material/Add';
 import default_picture from '../../assets/default_profile_icon.png';
 import { AddEvent } from '../addEvent/addEvent';
 import { UpdateTeam } from '../updateTeam/updateTeam';
+import { useLocation } from "react-router-dom";
 
 export const Team_Members = (props) => {
     
+    const location = useLocation();
+
     const [open, setOpen] = useState(null);
 
     const handleAddEvent = (user_id) => {
@@ -79,16 +82,7 @@ export const Team_Members = (props) => {
         </div>
         )
     } else{
-        if (props.page === "team"){
-            return (
-                <AddEvent id={open} />
-            )
-        }
-        if (props.page === "planning") {
-            return (
-                <UpdateTeam id={open} />
-            )
-        }
+        return location.pathname !== '/team'?  <AddEvent id={open} /> : <UpdateTeam id={open} />;
     }
     
 }
