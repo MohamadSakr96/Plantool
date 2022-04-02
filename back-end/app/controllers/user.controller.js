@@ -43,7 +43,7 @@ exports.updateProfile = async(req, res) => {
 // accept or reject new employees in notification section 
 exports.getPendingRequests = async (req, res) => {
     try {
-        const pending_users = await User.where("role").equals("pending").select("first_name last_name");   
+        const pending_users = await User.where("role").equals("pending").select("_id first_name last_name image_path");   
         res.status(200).send(pending_users);
     } catch (e) {
         res.status(500).send({ message: e.message });

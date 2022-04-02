@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './navbar.css';
 import { Link, Navigate, useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
@@ -10,9 +10,11 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import { forget } from '../../features/auth/authSlice';
+import { set } from '../../features/admin/notificationSlice';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { Notification } from '../notification/notification';
+import { GET_PENDING_REQUESTS_URL } from '../../constants';
 
 
 
@@ -21,6 +23,7 @@ export const Navbar = () => {
   let menu, notification;
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.value);
+  const notification_data = useSelector((state) => state.notification.value);
   const [anchorEl, setAnchorEl] = useState(null);
   const open_profile_menu = Boolean(anchorEl);
   const [redirect, setRedirect] = useState(false);
@@ -39,6 +42,19 @@ export const Navbar = () => {
   const handleClose_notification = () => {
     setOpen_notification(false);
   };
+
+  useEffect(async () => {
+    try {
+      const res = await axios.get(GET_PENDING_REQUESTS_URL, {
+        headers: {
+          "x-access-token": user.accessToken
+        }
+      });
+      dispatch(set(res.data));
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, []);
 
   async function logout() {
     try {

@@ -1,17 +1,25 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Link, Navigate } from "react-router-dom";
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { authenticate } from '../features/auth/authSlice';
+import { LOGIN_URL, GET_PENDING_REQUESTS_URL} from '../constants';
 
 export const Login = () => {
-  const loginUrl = 'http://localhost:8080/api/auth/login';
+
   const dispatch = useDispatch();
   const [ redirect, setRedirect ] = useState(false);
+  const user = useSelector((state) => state.auth.value);
+
+  useEffect(() => {
+    if(redirect) {
+      return <Navigate to={'/'}/>;
+    }
+  }, [redirect]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,7 +29,7 @@ export const Login = () => {
   };
 
   function loginUser(object) {
-    axios.post(loginUrl ,{
+    axios.post(LOGIN_URL ,{
       email: object.get('email'),
       password: object.get('password')
     })
@@ -33,10 +41,6 @@ export const Login = () => {
     .catch((err) => {
       console.log(err.message);
     });
-  }
-
-  if(redirect) {
-    return <Navigate to={'/'}/>;
   }
 
   return (
