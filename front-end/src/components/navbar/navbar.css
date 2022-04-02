@@ -8,14 +8,24 @@
 }
 
 .container-navbar_menu {
+	position: relative;
 	display: flex;
 	width: 30%;
 	height: 100%;
 	justify-content: space-around;
 	align-items: center;
 }
+.container-navbar_menu > svg {
+	position: absolute;
+	top: 0px;
+	z-index: 1;
+	width: 600px;
+	height: 62px;
+}
 
 .container-navbar a {
+	position: relative;
+	z-index: 2;
 	text-decoration: none;
 	color: white;
 	font-weight: 500;
