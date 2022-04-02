@@ -23,6 +23,7 @@ export const Navbar = () => {
   let menu, notification;
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.value);
+  const notification_data = useSelector((state) => state.notification.value);
   const updateData = useSelector((state) => state.updateData.value);
   const [anchorEl, setAnchorEl] = useState(null);
   const open_profile_menu = Boolean(anchorEl);
@@ -87,7 +88,7 @@ export const Navbar = () => {
         <div className='container-navbar_profile-notifications'>
           <div className='notification_icon'>
             <NotificationsIcon onClick={handleOpen_notification} style={{color: 'white'}} fontSize='small' sx={{ mr: 2, mt: 0.5}}/>
-            <div className='red-dot'></div>
+            {notification_data.length !== 0? <div className='red-dot'></div> : <></>}
           </div>
           <Dialog
             open={open_notification}
@@ -99,7 +100,7 @@ export const Navbar = () => {
               {"Add New Employee"}
             </DialogTitle>
             <DialogContent>
-              <Notification />
+              {notification_data.length !== 0? <Notification />: <> Sorry, you have no pending requests <br/> at the moment! </>}
             </DialogContent>
           </Dialog>
         </div>

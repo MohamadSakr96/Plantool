@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './notification.css';
-import default_picture from '../../assets/default_profile_icon.png';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import axios from 'axios';
-import {ACCEPT_REQUEST_URL, GET_PENDING_REQUESTS_URL, REJECT_REQUEST_URL} from '../../constants';
+import {ACCEPT_REQUEST_URL, REJECT_REQUEST_URL} from '../../constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateData } from '../../features/admin/updateDataSlice';
 
 
 export const Notification = () => {
-    // const [update, setUpdate] = useState(false);
     const user = useSelector((state) => state.auth.value);
     const dispatch = useDispatch();
     const notification_data = useSelector((state) => state.notification.value);
+    
     if (!user) {
         return;
     }
