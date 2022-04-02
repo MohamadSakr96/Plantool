@@ -7,11 +7,18 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { CREATE_PROJECT_URL, GET_ALL_PROJECTS_URL } from '../../constants';
+import { getAllProjects } from '../../features/admin/getAllProjectsSlice';
+
 
 export const ProjectForm = () => {
-
+    const user = useSelector((state) => state.auth.value);
     const [client, setClient] = useState('');
     const [type, setType] = useState('');
+    const dispatch = useDispatch();
+
     
     const handleClientChange = (event) => {
         setClient(event.target.value);
@@ -23,14 +30,45 @@ export const ProjectForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        
+        data.append("client", client);
+        data.append("type", type);
         createProject(data);
     };
 
-    const createProject = (object) => {
-        console.log(object.get("name"));
+    const createProject = async (object) => {
+        try {
+            const res = await axios.post(CREATE_PROJECT_URL, { 
+                name: object.get('name'),  
+                client: object.get('client'),  
+                type: object.get('type'),  
+                duration: object.get('duration'),
+                value: object.get('value')
+            },{
+                headers: {
+                  "x-access-token": user.accessToken
+                }
+            });
+            updateProjectData();
+            console.log(res.data.message);
+        } catch (error) {
+            console.log(error.message);
+        }
     };
 
+    const updateProjectData = async () => {
+        try {
+            if(user){
+              const res = await axios.get(GET_ALL_PROJECTS_URL, {
+                headers: {
+                  "x-access-token": user.accessToken
+                }
+              });
+              dispatch(getAllProjects(res.data));
+            }
+          } catch (error) {
+            console.log(error.message);
+          }
+    };
 
     return (
         <div className='container'>
@@ -83,9 +121,11 @@ export const ProjectForm = () => {
                             fullWidth
                             onChange={handleTypeChange}
                             >
-                            <MenuItem value={'Client A'}>Client A</MenuItem>
-                            <MenuItem value={'Client B'}>Client B</MenuItem>
-                            <MenuItem value={'Client C'}>Client C</MenuItem>
+                            <MenuItem value={'Web app'}>Web app</MenuItem>
+                            <MenuItem value={'E-commerce web'}>E-commerce web</MenuItem>
+                            <MenuItem value={'Mobile app'}>Mobile app</MenuItem>
+                            <MenuItem value={'Showcase web'}>Showcase web</MenuItem>
+                            <MenuItem value={'Other'}>Other</MenuItem>
                             </Select>
                         </FormControl>
                         </Grid>
