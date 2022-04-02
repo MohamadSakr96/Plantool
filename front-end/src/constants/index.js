@@ -16,3 +16,4 @@ export const REJECT_REQUEST_URL = "http://localhost:8080/api/admin/rejectRequest
 export const GET_ALL_PROJECTS_URL = "http://localhost:8080/api/admin/getAllProjects";
 export const CREATE_PROJECT_URL = "http://localhost:8080/api/admin/createProject";
 export const CREATE_EVENT_URL = "http://localhost:8080/api/admin/createEvent";
+export const UPDATE_TEAM_MEMBER_URL = "http://localhost:8080/api/admin/updateTeamMember";

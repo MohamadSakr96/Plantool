@@ -67,6 +67,28 @@ exports.rejectRequest = async (req, res) => {
         res.status(500).send({ message: e.message });
     }
 };
+exports.updateTeamMember = async(req, res) => {
+    try {
+        const update = {
+            first_name:  req.body.first_name,
+            last_name: req.body.last_name,
+            salary: req.body.salary,
+            position: req.body.position,
+        };
+        
+        const updated_user = await User.findOneAndUpdate(
+            {_id: req.body._id}, 
+            update, 
+            {
+                returnNewDocument : true ,
+                upsert: true
+            }
+        );
+        res.status(200).send(updated_user);
+    } catch (e) {
+        res.status(500).send({ message: e.message});
+    }
+};
 
 // projects functions
 exports.getAllProjects = async (req, res) => {
@@ -109,6 +131,12 @@ exports.createEvent = async (req, res) => {
             }else {
                 const user = await User.where("_id").equals(req.body._id);
                 user[0]["events"].push(event._id);
+                if (event["name"] === "vacation") {
+                    const difference_in_days = (event.end_date-event.start_date)/(1000 * 3600 * 24);
+                    if (user[0]["vacation_days"] - difference_in_days >= 0) {
+                        user[0]["vacation_days"] -= difference_in_days; 
+                    }
+                }
                 await user[0].save();
             }
         });

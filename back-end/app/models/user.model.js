@@ -22,6 +22,19 @@ const User = mongoose.model(
             default: "http://localhost:8080/images/default_profile_icon.png"
         },
 
+        position: {
+            type: String,
+            default: "N/A"
+        },
+        salary: {
+            type: Number,
+            default: null
+        },
+        vacation_days: {
+            type: Number,
+            default: 20
+        },
+
         events: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Event'

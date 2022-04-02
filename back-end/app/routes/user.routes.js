@@ -51,6 +51,11 @@ module.exports = function(app) {
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.updateProfile
     );
+    app.post(
+        "/api/admin/updateTeamMember",
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.updateTeamMember
+    );
 
     // Employee APIs
 

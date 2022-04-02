@@ -57,12 +57,14 @@ export const Planning = () => {
 
   useEffect(async () => {
     try {
-      const res = await axios.get(user.role==="admin"? GET_ALL_USERS_URL:EMP_GET_ALL_USERS_URL, {
-        headers: {
-          "x-access-token": user.accessToken
-        }
-      });
-      dispatch(getUsersInfo(res.data));
+      if(user){
+        const res = await axios.get(user.role==="admin"? GET_ALL_USERS_URL:EMP_GET_ALL_USERS_URL, {
+          headers: {
+            "x-access-token": user.accessToken
+          }
+        });
+        dispatch(getUsersInfo(res.data));
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -76,7 +78,7 @@ export const Planning = () => {
   };
 
   return (
-    <div className='container-planning'>
+    user?<div className='container-planning'>
       <div className='container-planning_title'>
         <h1>Planning</h1>
         {user.role === "admin"? <AddIcon onClick={handleOpen} fontSize='large' color='primary'/>: <></>}
@@ -100,6 +102,6 @@ export const Planning = () => {
 
         />
       </div>
-    </div>
+    </div>:<></>
   )
 }

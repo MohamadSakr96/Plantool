@@ -38,7 +38,7 @@ export const AddEvent = (props) => {
 
     const createEvent = async (object) => {
         try {
-            await axios.post(CREATE_EVENT_URL, {
+            const res = await axios.post(CREATE_EVENT_URL, {
                 _id: object.get("_id"),  
                 name: object.get('name'),  
                 description: object.get('description'),  
@@ -49,12 +49,11 @@ export const AddEvent = (props) => {
                   "x-access-token": user.accessToken
                 }
             });
-            console.log("New Event Added!");
+            console.log(res.data.message);
         } catch (error) {
             console.log(error.message);
         }
     };
-
 
     return (
         <div className='container'>

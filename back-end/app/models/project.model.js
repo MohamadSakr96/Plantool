@@ -7,7 +7,12 @@ const Project = mongoose.model(
         type: String,
         client: String,
         value: Number,
-        duration: Number
+        duration: Number,
+        createdAt: {
+            type: Date,
+            immutable: true,
+            default: () => Date.now(),
+        }
     })
 );
 
