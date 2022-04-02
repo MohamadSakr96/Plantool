@@ -4,12 +4,14 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
-import { UPDATE_TEAM_MEMBER_URL } from '../../constants';
+import { useSelector, useDispatch } from 'react-redux';
+import { GET_ALL_USERS_URL, UPDATE_TEAM_MEMBER_URL } from '../../constants';
+import { getUsersInfo } from '../../features/admin/getAllUsersInfoSlice';
 
 export const UpdateTeam = (props) => {
 
     const user = useSelector((state) => state.auth.value);
+    const dispatch = useDispatch();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -32,12 +34,27 @@ export const UpdateTeam = (props) => {
                   "x-access-token": user.accessToken
                 }
             });
+            updateAllUsersInfo();
             console.log(updated_data);
         } catch (error) {
             console.log(error.message);
         }
     };
 
+    const updateAllUsersInfo = async () => {
+        try {
+            if(user){
+              const res = await axios.get(GET_ALL_USERS_URL, {
+                headers: {
+                  "x-access-token": user.accessToken
+                }
+              });
+              dispatch(getUsersInfo(res.data));
+            }
+          } catch (error) {
+            console.log(error.message);
+          }
+    };
 
     return (
         <div className='container'>

@@ -181,3 +181,28 @@ a {
 .privacy_title {
 	border-bottom: 1px solid rgba(67, 97, 238, 0.5);
 }
+
+/* TEAM PAGE */
+.tablecell-image {
+	margin: 0;
+	padding: 5px !important;
+	display: flex !important;
+	justify-content: center;
+}
+
+.container-team_image {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	height: 64px;
+	width: 64px;
+	border: 2px solid #4361ee;
+	background-color: white;
+	border-radius: 100%;
+	overflow: hidden;
+}
+.container-team_image  > img {
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+}
