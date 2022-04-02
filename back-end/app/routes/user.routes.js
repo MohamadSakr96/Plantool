@@ -26,7 +26,7 @@ module.exports = function(app) {
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.rejectRequest
     );
-    app.post(
+    app.get(
         "/api/admin/getAllProjects",
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.getAllProjects
