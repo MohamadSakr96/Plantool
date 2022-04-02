@@ -26,6 +26,21 @@ const rows = [
 export const Projects = () => {
   const [open, setOpen] = useState(false);
 
+  // useEffect(async () => {
+  //   try {
+  //     if(user){
+  //       const res = await axios.get(GET_ALL_USERS_URL, {
+  //         headers: {
+  //           "x-access-token": user.accessToken
+  //         }
+  //       });
+  //       dispatch(getUsersInfo(res.data));
+  //     }
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // },[]);
+
   const handleOpen = () => {
     setOpen(true);
   };
