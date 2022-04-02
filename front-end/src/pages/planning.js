@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import { Team_Members } from '../components/team_members/team_members';
 import { Chart } from "react-google-charts";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUsersInfo } from '../features/admin/getAllUsersInfoSlice';
+import axios from 'axios';
+import { EMP_GET_ALL_USERS_URL, GET_ALL_USERS_URL } from '../constants';
 
 const columns = [
   { type: "string", id: "Employees" },
@@ -44,13 +47,26 @@ const rows = [
   ["Moo", "Project 4", new Date(2021, 6, 30), new Date(2021, 12, 30)],
   ["Moo", "Project 5", new Date(2022, 1, 30), new Date(2022, 6, 30)],
 ];
+
 const data = [columns, ...rows];
 
 export const Planning = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.value);
   const [open, setOpen] = useState(false);
 
-  let renderButton;
+  useEffect(async () => {
+    try {
+      const res = await axios.get(user.role==="admin"? GET_ALL_USERS_URL:EMP_GET_ALL_USERS_URL, {
+        headers: {
+          "x-access-token": user.accessToken
+        }
+      });
+      dispatch(getUsersInfo(res.data));
+    } catch (error) {
+      console.log(error.message);
+    }
+  },[]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -59,15 +75,11 @@ export const Planning = () => {
     setOpen(false);
   };
 
-  if (user && user.role === "admin") {
-    renderButton = <AddIcon onClick={handleOpen} fontSize='large' color='primary'/>;
-  }
-
   return (
     <div className='container-planning'>
       <div className='container-planning_title'>
         <h1>Planning</h1>
-        {renderButton}
+        {user.role === "admin"? <AddIcon onClick={handleOpen} fontSize='large' color='primary'/>: <></>}
         <Dialog
             open={open}
             onClose={handleClose}

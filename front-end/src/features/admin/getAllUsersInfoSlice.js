@@ -6,7 +6,7 @@ export const getAllUsersInfoSlice = createSlice({
         value: []
     },
     reducers: {
-        setUsersInfo: (state, action) => {
+        getUsersInfo: (state, action) => {
             state.value = action.payload;
         }
     }

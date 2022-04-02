@@ -55,7 +55,7 @@ export const Navbar = () => {
     } catch (error) {
       console.log(error.message);
     }
-  }, [updateData]);
+  }, []);
 
   async function logout() {
     try {
