@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import {setupListeners} from "@reduxjs/toolkit/query";
 import authReducer from '../features/auth/authSlice';
 import notificationReducer from '../features/admin/notificationSlice';
+import updateDataReducer from '../features/admin/notificationSlice';
 
 export const store = configureStore({
     reducer: {
         auth: authReducer,
         notification: notificationReducer,
+        updateData: updateDataReducer,
     },
 })
 

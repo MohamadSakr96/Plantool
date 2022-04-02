@@ -23,7 +23,7 @@ export const Navbar = () => {
   let menu, notification;
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.value);
-  const notification_data = useSelector((state) => state.notification.value);
+  const updateData = useSelector((state) => state.updateData.value);
   const [anchorEl, setAnchorEl] = useState(null);
   const open_profile_menu = Boolean(anchorEl);
   const [redirect, setRedirect] = useState(false);
@@ -54,7 +54,7 @@ export const Navbar = () => {
     } catch (error) {
       console.log(error.message);
     }
-  }, []);
+  }, [updateData]);
 
   async function logout() {
     try {

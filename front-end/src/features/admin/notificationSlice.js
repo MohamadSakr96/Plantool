@@ -13,6 +13,6 @@ export const notificationSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { set, reset } = notificationSlice.actions;
+export const { set } = notificationSlice.actions;
 
 export default notificationSlice.reducer;
