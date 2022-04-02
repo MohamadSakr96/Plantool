@@ -7,11 +7,15 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import { CREATE_EVENT_URL } from '../../constants';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 export const AddEvent = (props) => {
     const [type, setType] = useState('');
     const [project, setProject] = useState('');
-    
+    const user = useSelector((state) => state.auth.value);
+
     const handleTypeChange = (event) => {
         setType(event.target.value);
     };
@@ -22,12 +26,33 @@ export const AddEvent = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        
+        data.append("_id", props.id);
+        data.append("name", type);
+        if(type === "project") {
+            data.append("description", project);
+        }else {
+            data.append("description", type);
+        }
         createEvent(data);
     };
 
-    const createEvent = (object) => {
-        console.log(object.get("start_date"), props.id);
+    const createEvent = async (object) => {
+        try {
+            await axios.post(CREATE_EVENT_URL, {
+                _id: object.get("_id"),  
+                name: object.get('name'),  
+                description: object.get('description'),  
+                start_date: object.get('start_date'),
+                end_date: object.get('end_date')
+            },{
+                headers: {
+                  "x-access-token": user.accessToken
+                }
+            });
+            console.log("New Event Added!");
+        } catch (error) {
+            console.log(error.message);
+        }
     };
 
 
@@ -67,7 +92,8 @@ export const AddEvent = (props) => {
                             value={project}
                             label="project"
                             size="medium"
-                            required
+                            disabled={type!=="project"}
+                            required={type==="project"}
                             fullWidth
                             onChange={handleProjectChange}
                             >

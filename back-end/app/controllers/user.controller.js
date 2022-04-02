@@ -101,14 +101,14 @@ exports.createEvent = async (req, res) => {
             description: req.body.description,
             start_date: req.body.start_date,
             end_date: req.body.end_date,
-            user: req.body.user_id
+            user: req.body._id
         });
         await event.save(async (err, event) => {
             if (err) {
                 res.status(500).send({ message: e.message });
             }else {
-                const user = await User.where("_id").equals(req.body.user_id);
-                user[0].events.push(event._id);
+                const user = await User.where("_id").equals(req.body._id);
+                user[0]["events"].push(event._id);
                 await user[0].save();
             }
         });
