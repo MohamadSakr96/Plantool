@@ -57,7 +57,6 @@ export const AddEvent = (props) => {
                   "x-access-token": user.accessToken
                 }
             });
-            console.log(res.data.message);
         } catch (error) {
             console.log(error.message);
         }
