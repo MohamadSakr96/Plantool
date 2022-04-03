@@ -14,6 +14,8 @@ import { useSelector } from 'react-redux';
 export const AddEvent = (props) => {
     const [type, setType] = useState('');
     const [project, setProject] = useState('');
+    const [start_date, setStart_date] = useState(Date.now());
+    const [end_date, setEnd_date] = useState(Date.now());
     const user = useSelector((state) => state.auth.value);
 
     const handleTypeChange = (event) => {
@@ -21,6 +23,12 @@ export const AddEvent = (props) => {
     };
     const handleProjectChange = (event) => {
         setProject(event.target.value);
+    };
+    const handleStartChange = (event) => {
+        setStart_date(event.target.value);
+    };
+    const handleEndChange = (event) => {
+        setEnd_date(event.target.value);
     };
 
     const handleSubmit = (event) => {
@@ -110,6 +118,7 @@ export const AddEvent = (props) => {
                             type="date"
                             id="start_date"
                             size="medium"
+                            onChange={handleStartChange}
                         />
                         </Grid>
                         <Grid item xs={6}>
@@ -120,6 +129,7 @@ export const AddEvent = (props) => {
                             type="date"
                             id="end_date"
                             size="medium"
+                            onChange={handleEndChange}
                         />
                         </Grid>
                     </Grid>
