@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -39,7 +39,7 @@ export const Profile = () => {
 
   async function updateUser(object) {
     try {
-      await axios.post(user.role===admin? UPDATE_PROFILE_URL:EMP_UPDATE_PROFILE_URL, {
+      const res = await axios.post(user.role==='admin'? UPDATE_PROFILE_URL:EMP_UPDATE_PROFILE_URL, {
         _id : object.get("_id"),
         first_name : object.get("first_name"),
         last_name : object.get("last_name"),
@@ -50,16 +50,15 @@ export const Profile = () => {
         headers: {
           "x-access-token": user.accessToken
         }
-      }).then((res) => {
-        let old_data = JSON.parse(localStorage.getItem('user'));
-        Object.keys(old_data).map((key)=> {
-          if(typeof(old_data[key]) === typeof(res.data[key])) {
-            old_data[key] = res.data[key];
-          }
-        });
-        localStorage.setItem('user', JSON.stringify(old_data));
-        dispatch(authenticate());
       });
+      let old_data = JSON.parse(localStorage.getItem('user'));
+      Object.keys(old_data).map((key)=> {
+        if(typeof(old_data[key]) === typeof(res.data[key])) {
+          old_data[key] = res.data[key];
+        }
+      });
+      localStorage.setItem('user', JSON.stringify(old_data));
+      dispatch(authenticate());
     }catch (err) {
       console.log(err);
     }

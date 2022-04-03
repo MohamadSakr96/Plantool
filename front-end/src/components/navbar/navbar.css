@@ -64,6 +64,7 @@ a:hover {
 }
 
 .container-navbar_profile-picture {
+	display: flex;
 	height: 48px;
 	aspect-ratio: 1;
 	background-color: white;
@@ -74,6 +75,6 @@ a:hover {
 }
 .container-navbar_profile-picture > img {
 	width: 100%;
-	object-fit: contain;
+	object-fit: cover;
 	object-position: center;
 }

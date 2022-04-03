@@ -7,12 +7,7 @@ const fs = require("fs");
 // admin/employee functions
 exports.updateProfile = async(req, res) => {
     try {
-        const update = {
-            // first_name:  req.body.first_name,
-            // last_name: req.body.last_name,
-            // email: req.body.email,
-            // password: 
-        };
+        const update = {};
         Object.keys(req.body).map((key)=>{
             if (req.body[key] !== ''){
                 if (key === 'password') {
@@ -31,7 +26,7 @@ exports.updateProfile = async(req, res) => {
         const updated_user = await User.findOneAndUpdate(
             {_id: req.body._id}, 
             update, 
-            {returnNewDocument : true }
+            { returnDocument: 'after'}
         );
         res.status(200).send(updated_user);
     } catch (e) {
@@ -80,8 +75,7 @@ exports.updateTeamMember = async(req, res) => {
             {_id: req.body._id}, 
             update, 
             {
-                returnNewDocument : true ,
-                upsert: true
+                returnDocument: 'after'
             }
         );
         res.status(200).send(updated_user);
