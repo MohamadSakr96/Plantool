@@ -5,6 +5,15 @@ const db = require("./app/models");
 const User = require("./app/models/user.model");
 var bcrypt = require("bcryptjs");
 
+// FireBase
+var admin = require("firebase-admin");
+
+var serviceAccount = require("./secret/plantool-346019-firebase-adminsdk-yjsdk-d22df9843e.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
 const app = express();
 var corsOptions = {
     origin: '*',
