@@ -79,7 +79,7 @@ export const Navbar = () => {
       menu = (
         <div className='container-navbar_menu'>
           <svg xmlns="http://www.w3.org/2000/svg" width="929" height="103" viewBox="0 0 929 103" fill="none">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M43.5964 0H40.7805V0.0373552L0.120117 4.5067e-05L57.8469 65.391L58.0066 65.2115C74.5573 88.1042 101.486 103 131.894 103H134.71H794.411H797.227C827.634 103 854.563 88.1042 871.114 65.2116L871.273 65.391L929 4.5067e-05L888.34 0.0373549V0H885.524H43.5964Z" fill="#3C5B9A"/>
+          <path fillRule="evenodd" clipRule="evenodd" d="M43.5964 0H40.7805V0.0373552L0.120117 4.5067e-05L57.8469 65.391L58.0066 65.2115C74.5573 88.1042 101.486 103 131.894 103H134.71H794.411H797.227C827.634 103 854.563 88.1042 871.114 65.2116L871.273 65.391L929 4.5067e-05L888.34 0.0373549V0H885.524H43.5964Z" fill="#3C5B9A"/>
           </svg>
           <Link className={location.pathname === '/'? 'active': ''} to='/'>Planning</Link>
           <Link className={location.pathname === '/team'? 'active': ''} to='team'>Team</Link>
