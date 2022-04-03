@@ -5,7 +5,29 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 const { user } = require("../models");
 
-exports.register = (req, res) => {
+// fire base push notification message
+var admin = require("firebase-admin");
+
+var serviceAccount = require("../../secret/plantool-346019-firebase-adminsdk-yjsdk-d22df9843e.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+
+// exports.sendNotificationMessage = (message) => {
+//     console.log("send notif!");
+    
+// };
+
+exports.register = async (req, res) => {
+    const message = {
+        notification: {
+            title: 'Plantool',
+            body: 'New User Registered!'
+        },
+        token: "clMFQMQAOBWoF6XF4oSvg5:APA91bEeOxfy7Rn1cpmo4FnAdDTbcbMhnXACsWbTg5MPKQerSbMe8-ZALw0aECI4fbG7-3uSJlumA29FLzjK5TQJNn1SVptreTOZzT0gAm-Q-QzQP3GXwWe4JpJgDNOt3a_6I-rHxK2S"
+    }
     const user = new User({
         first_name:  req.body.first_name,
         last_name: req.body.last_name,
@@ -14,11 +36,19 @@ exports.register = (req, res) => {
         role: "pending",
         image_path: "http://localhost:8080/images/default_profile_icon.png"
     });
-    user.save((err, user) => {
+    console.log(user);
+    await user.save(async (err, user) => {
         if (err) {
             res.status(500).send({ message: err });
             return;
         }
+        await admin.messaging().send(message)
+                    .then((response)=>{
+                        console.log('Successfully sent message:', response);
+                    })
+                    .catch((error) => {
+                        console.log('Error:', error);
+                    });
         res.send({ message: "Request has been Sent!" });
     });
 };

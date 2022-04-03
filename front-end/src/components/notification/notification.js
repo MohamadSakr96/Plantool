@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './notification.css';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import axios from 'axios';
-import {ACCEPT_REQUEST_URL, REJECT_REQUEST_URL} from '../../constants';
+import {ACCEPT_REQUEST_URL, REJECT_REQUEST_URL, GET_PENDING_REQUESTS_URL} from '../../constants';
+import { set } from '../../features/admin/notificationSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 
@@ -11,10 +12,20 @@ export const Notification = () => {
     const user = useSelector((state) => state.auth.value);
     const dispatch = useDispatch();
     const notification_data = useSelector((state) => state.notification.value);
+    const [update_data, setUpdateData] = useState(false);
     
-    if (!user) {
-        return;
-    }
+    useEffect(async () => {
+        try {
+          const res = await axios.get(GET_PENDING_REQUESTS_URL, {
+            headers: {
+              "x-access-token": user.accessToken
+            }
+          });
+          dispatch(set(res.data));
+        } catch (error) {
+          console.log(error.message);
+        }
+      }, [update_data]);
 
     const handleAccept = async (event) => {
         try {
@@ -25,8 +36,7 @@ export const Notification = () => {
                     "x-access-token": user.accessToken
                 }
             });
-            // dispatch(updateData());
-            console.log("request accepted!");
+            setUpdateData(true);
         } catch (error) {
             console.log(error.message);
         }
@@ -41,8 +51,7 @@ export const Notification = () => {
                     "x-access-token": user.accessToken
                 }
             });
-            // dispatch(updateData());
-            console.log("request accepted!");
+            setUpdateData(true);
         } catch (error) {
             console.log(error.message);
         }

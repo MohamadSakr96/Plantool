@@ -7,23 +7,15 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { authenticate } from '../features/auth/authSlice';
+import { EMP_UPDATE_PROFILE_URL, UPDATE_PROFILE_URL } from '../constants';
 
 
 export const Profile = () => {
   const user = useSelector((state) => state.auth.value);
-  let updateURL = `http://localhost:8080/api/admin/updateProfile`;
 
   const [image, setImage] = useState('');
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    if(user) {
-      if(user.role === "admin") {
-        console.log("yo");
-        updateURL = `http://localhost:8080/api/admin/updateProfile`;
-      }
-    }
-  },[user]);
 
   const handleImage = (event) => {
     let file = event.target.files[0];
@@ -47,7 +39,7 @@ export const Profile = () => {
 
   async function updateUser(object) {
     try {
-      await axios.post(updateURL, {
+      await axios.post(user.role===admin? UPDATE_PROFILE_URL:EMP_UPDATE_PROFILE_URL, {
         _id : object.get("_id"),
         first_name : object.get("first_name"),
         last_name : object.get("last_name"),

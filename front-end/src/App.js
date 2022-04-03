@@ -10,14 +10,8 @@ import { Stats } from './pages/stats';
 import { Team } from './pages/team';
 import { AdminRoutes } from './routes/AdminRoutes';
 import { PublicRoutes } from './routes/PublicRoutes';
-import { getFCMToken } from './firebaseinit';
 
 function App() {
-
-  useEffect(()=>{
-    console.log(getFCMToken());
-  },[]);
-
   return (
     <Routes>
       <Route path='/' element= { <PublicRoutes /> }>

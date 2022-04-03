@@ -1,13 +1,34 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import TextField from '@mui/material/TextField';
 import { Billability_Stats } from '../components/billability_stats/billability_stats';
 import { Project_Stats } from '../components/project_stats/project_stats';
+import { GET_ALL_PROJECTS_URL } from '../constants';
+import { useSelector , useDispatch} from 'react-redux';
+import { getAllProjects } from '../features/admin/getAllProjectsSlice';
+import axios from 'axios';
 
 
 export const Stats = () => {
   const [status, setStatus] = useState(false);
   const [start, setStart] = useState("2022-01-01");
   const [end, setEnd] = useState("2022-06-01");
+  const dispatch = useDispatch();
+  const user = useSelector((state)=>state.auth.value);
+
+  useEffect(async () => {
+    try {
+      if(user){
+        const res = await axios.get(GET_ALL_PROJECTS_URL, {
+          headers: {
+            "x-access-token": user.accessToken
+          }
+        });
+        dispatch(getAllProjects(res.data));
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  },[]);
 
   const Content = () => {
     if(status) {
