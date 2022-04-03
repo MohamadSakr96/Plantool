@@ -67,8 +67,6 @@ export const Billability_Stats = (props) => {
         return [start,end];
     };
 
-
-
     const getBillability = (data_array) => {
         let days_staffed = 0;
         let vac_days = 0;
