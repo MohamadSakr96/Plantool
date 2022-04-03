@@ -38,6 +38,7 @@
 	border-radius: 100%;
 	margin-left: 1rem;
 	border: 2px solid #4361ee;
+	overflow: hidden;
 }
 .billability_content-item_user_picture > img {
 	width: 100%;
