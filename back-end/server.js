@@ -14,6 +14,24 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 
+const message = {
+    notification: {
+        title: 'New message',
+        body: 'Hello from server'
+    },
+    token: "clMFQMQAOBWoF6XF4oSvg5:APA91bEeOxfy7Rn1cpmo4FnAdDTbcbMhnXACsWbTg5MPKQerSbMe8-ZALw0aECI4fbG7-3uSJlumA29FLzjK5TQJNn1SVptreTOZzT0gAm-Q-QzQP3GXwWe4JpJgDNOt3a_6I-rHxK2S"
+}
+
+exports.sendNotificationMessage = (message) => {
+    admin.messaging().send(message)
+        .then((response)=>{
+            console.log('Successfully sent message:', response);
+        })
+        .catch((error) => {
+            console.log('Error:', error);
+        });
+};
+
 const app = express();
 var corsOptions = {
     origin: '*',
