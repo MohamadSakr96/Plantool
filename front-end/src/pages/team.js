@@ -99,7 +99,7 @@ export const Team = () => {
                   </TableCell>
                   <TableCell align="center">{data["first_name"]}</TableCell>
                   <TableCell align="center">{data["last_name"]}</TableCell>
-                  <TableCell align="center">{data["entry_date"]}</TableCell>
+                  <TableCell align="center">{data["createdAt"].split("T")[0]}</TableCell>
                   <TableCell align="center">{data["salary"]}</TableCell>
                   <TableCell align="center">{data["position"]}</TableCell>
                   <TableCell align="center">{data["vacation_days"]}</TableCell>
