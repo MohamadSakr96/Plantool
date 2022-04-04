@@ -17,6 +17,7 @@ export const AddEvent = (props) => {
     const [start_date, setStart_date] = useState(Date.now());
     const [end_date, setEnd_date] = useState(Date.now());
     const user = useSelector((state) => state.auth.value);
+    const projects = useSelector((state) => state.getAllProjects.value);
 
     const handleTypeChange = (event) => {
         setType(event.target.value);
@@ -103,9 +104,9 @@ export const AddEvent = (props) => {
                             fullWidth
                             onChange={handleProjectChange}
                             >
-                            <MenuItem value={'alpha'}>Alpha</MenuItem>
-                            <MenuItem value={'beta'}>Beta</MenuItem>
-                            <MenuItem value={'gamma'}>Gamma</MenuItem>
+                            {projects.map((project,index)=>{
+                              return <MenuItem key={index} value={project["name"]}>{project["name"]}</MenuItem>
+                            })}
                             </Select>
                         </FormControl>
                         </Grid>

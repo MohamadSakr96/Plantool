@@ -75,7 +75,7 @@ export const Planning = () => {
   
   const users_data = useSelector((state) => state.getAllUsersInfo.value);
   const rows = [];
-  users_data.map((data,index) => {
+  users_data.map((data) => {
     let temp_array = [];
     data["events"].map((eve)=>{
       let arr = [];

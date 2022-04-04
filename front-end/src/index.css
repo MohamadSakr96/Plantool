@@ -193,7 +193,6 @@ a {
 .container-team_image {
 	display: flex;
 	justify-content: flex-end;
-	align-items: center;
 	height: 64px;
 	width: 64px;
 	border: 2px solid #4361ee;
