@@ -12,6 +12,7 @@ import { forget } from '../../features/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { Notification } from '../notification/notification';
+import { PushNotification } from '../pushNotification/pushNotification';
 
 
 
@@ -99,6 +100,7 @@ export const Navbar = () => {
 
   return (
     <div className='container-navbar'>
+      <PushNotification/>
         <div className='container-navbar_logo'>
             <Link id='plantool_logo' to='/'><h3>Plantool</h3></Link>
         </div>

@@ -35,21 +35,24 @@ function App() {
     })
   .catch((err) => console.log("failed: ", err));
 
-  useEffect(async () => {
+  useEffect(() => {
     if(show) {
-      try {
-        const res = await axios.get(GET_PENDING_REQUESTS_URL, {
-          headers: {
-            "x-access-token": user.accessToken
-          }
-        });
-        dispatch(set(res.data));
-      } catch (error) {
-        console.log(error.message);
+      async function fetchData() {
+        try {
+          const res = await axios.get(GET_PENDING_REQUESTS_URL, {
+            headers: {
+              "x-access-token": user.accessToken
+            }
+          });
+          dispatch(set(res.data)); 
+        } catch (error) {
+          console.log(error.message);
+        }
       }
+      fetchData();
     }
   }, [notification]);
-  
+
   return (
     <Routes>
       <Route path='/' element= { <PublicRoutes /> }>
