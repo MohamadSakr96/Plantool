@@ -11,10 +11,11 @@ import { Team } from './pages/team';
 import { AdminRoutes } from './routes/AdminRoutes';
 import { PublicRoutes } from './routes/PublicRoutes';
 import { onMessageListener } from './firebaseinit';
-import { set } from './features/admin/notificationSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { GET_PENDING_REQUESTS_URL } from './constants';
+import { set } from './features/admin/notificationSlice';
+import { open } from './features/notification/pushNotificationSlice';
 
 
 function App() {
@@ -45,6 +46,8 @@ function App() {
             }
           });
           dispatch(set(res.data)); 
+          dispatch(open());
+          setShow(false);
         } catch (error) {
           console.log(error.message);
         }
