@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './billability_stats.css';
+import './billabilityStats.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsersInfo } from '../../features/admin/getAllUsersInfoSlice';
 
-export const Billability_Stats = (props) => {
+export const BillabilityStats = (props) => {
     const users_data = useSelector((state) => state.getAllUsersInfo.value);   
     const [billability, setBillability] = useState(0);
     const start_date = new Date(props.date[0]);

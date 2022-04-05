@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import { Team_Members } from '../components/team_members/team_members';
+import { TeamMembers } from '../components/teamMembers/teamMembers';
 import { Chart } from "react-google-charts";
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsersInfo } from '../features/admin/getAllUsersInfoSlice';
@@ -18,39 +18,6 @@ const columns = [
 ];
 //                green     yellow    red
 const colors = ["#0f9d58","#f4b400","#db4437"];
-
-// const rows = [
-//   ["Mohamad Sakr", "Project 1", new Date(2020, 3, 30), new Date(2020, 6, 30)],
-//   ["Mohamad Sakr", "Project 2", new Date(2020, 5, 30), new Date(2020, 12, 30)],
-//   ["Mohamad Sakr", "Project 3", new Date(2021, 1, 30), new Date(2021, 6, 30)],
-//   ["Mohamad Sakr", "Project 4", new Date(2021, 6, 30), new Date(2021, 12, 30)],
-// //   ["Mohamad Sakr", "Project 5", new Date(2022, 1, 30), new Date(2022, 6, 30)],
-// //   ["Joe Rizk", "Project 1", new Date(2020, 1, 30), new Date(2020, 6, 30)],
-// //   ["Joe Rizk", "Project 2", new Date(2020, 6, 30), new Date(2020, 12, 30)],
-// //   ["Joe Rizk", "Project 3", new Date(2021, 3, 30), new Date(2021, 6, 30)],
-// //   ["Joe Rizk", "Project 4", new Date(2021, 6, 30), new Date(2021, 12, 30)],
-// //   ["Joe Rizk", "Project 5", new Date(2022, 1, 30), new Date(2022, 6, 30)],
-// //   ["John Doe", "Project 1", new Date(2020, 2, 30), new Date(2020, 6, 30)],
-// //   ["John Doe", "Project 2", new Date(2020, 7, 30), new Date(2020, 11, 30)],
-// //   ["John Doe", "Project 3", new Date(2021, 1, 30), new Date(2021, 6, 30)],
-// //   ["John Doe", "Project 4", new Date(2021, 6, 30), new Date(2021, 12, 30)],
-// //   ["John Doe", "Project 5", new Date(2022, 1, 30), new Date(2022, 6, 30)],
-// //   ["Caline", "Project 1", new Date(2020, 3, 30), new Date(2020, 6, 30)],
-// //   ["Caline", "Project 2", new Date(2020, 6, 30), new Date(2020, 12, 30)],
-// //   ["Caline", "Project 3", new Date(2021, 1, 30), new Date(2021, 6, 30)],
-// //   ["Caline", "Project 4", new Date(2021, 6, 30), new Date(2021, 12, 30)],
-// //   ["Caline", "Project 5", new Date(2022, 1, 30), new Date(2022, 6, 30)],
-// //   ["Joe", "Project 1", new Date(2020, 1, 30), new Date(2020, 6, 30)],
-// //   ["Joe", "Project 2", new Date(2020, 6, 30), new Date(2020, 12, 30)],
-// //   ["Joe", "Project 3", new Date(2021, 3, 30), new Date(2021, 6, 30)],
-// //   ["Moo", "Project 1", new Date(2020, 2, 30), new Date(2020, 6, 30)],
-// //   ["Moo", "Project 2", new Date(2020, 7, 30), new Date(2020, 11, 30)],
-// //   ["Moo", "Project 3", new Date(2021, 1, 30), new Date(2021, 6, 30)],
-// //   ["Moo", "Project 4", new Date(2021, 6, 30), new Date(2021, 12, 30)],
-// //   ["Moo", "Project 5", new Date(2022, 1, 30), new Date(2022, 6, 30)],
-// ];
-
-// const data = [columns, ...rows];
 
 export const Planning = () => {
   const dispatch = useDispatch();
@@ -111,7 +78,7 @@ export const Planning = () => {
             aria-describedby="alert-dialog-description"
           >
             <DialogContent>
-              <Team_Members />
+              <TeamMembers />
             </DialogContent>
           </Dialog>
       </div>

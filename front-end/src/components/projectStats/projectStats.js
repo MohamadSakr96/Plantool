@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './project_stats.css';
+import './projectStats.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProjectStats } from '../../features/admin/getProjectStatsSlice';
 
 
-export const Project_Stats = (props) => {
+export const ProjectStats = (props) => {
   const projects_data = useSelector((state) => state.getAllProjects.value);
   const projects_stat = useSelector((state) => state.getProjectStats.value);
   const start_date = new Date(props.date[0]);

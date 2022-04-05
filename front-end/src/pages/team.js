@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import { Team_Members } from '../components/team_members/team_members';
+import { TeamMembers } from '../components/teamMembers/teamMembers';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -68,7 +68,7 @@ export const Team = () => {
             aria-describedby="alert-dialog-description"
           >
             <DialogContent>
-              <Team_Members page = {'team'}/>
+              <TeamMembers page = {'team'}/>
             </DialogContent>
         </Dialog>
       </div>

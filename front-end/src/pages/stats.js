@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import TextField from '@mui/material/TextField';
-import { Billability_Stats } from '../components/billability_stats/billability_stats';
-import { Project_Stats } from '../components/project_stats/project_stats';
+import { BillabilityStats } from '../components/billabilityStats/billabilityStats';
+import { ProjectStats } from '../components/projectStats/projectStats';
 import { GET_ALL_PROJECTS_URL } from '../constants';
 import { useSelector , useDispatch} from 'react-redux';
 import { getAllProjects } from '../features/admin/getAllProjectsSlice';
@@ -32,9 +32,9 @@ export const Stats = () => {
 
   const Content = () => {
     if(status) {
-      return <Project_Stats date ={[start, end]} />;
+      return <ProjectStats date ={[start, end]} />;
     }else {
-      return <Billability_Stats date ={[start, end]} />;
+      return <BillabilityStats date ={[start, end]} />;
     }
   };
 

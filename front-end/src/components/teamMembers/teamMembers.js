@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import './team_members.css';
+import './teamMembers.css';
 import AddIcon from '@mui/icons-material/Add';
 import { AddEvent } from '../addEvent/addEvent';
 import { UpdateTeam } from '../updateTeam/updateTeam';
 import { useLocation } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
-export const Team_Members = () => {
+export const TeamMembers = () => {
     const user = useSelector((state) => state.auth.value);
     const users_data = useSelector((state) => state.getAllUsersInfo.value);
     const location = useLocation();
