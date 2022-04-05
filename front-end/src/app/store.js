@@ -6,6 +6,7 @@ import updateDataReducer from '../features/admin/notificationSlice';
 import getAllUsersInfoReducer from '../features/admin/getAllUsersInfoSlice';
 import getAllProjectsReducer from '../features/admin/getAllProjectsSlice';
 import getProjectStatsReducer from '../features/admin/getProjectStatsSlice';
+import pushNotificationReducer from '../features/notification/pushNotificationSlice';
 
 export const store = configureStore({
     reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
         getAllUsersInfo: getAllUsersInfoReducer,
         getAllProjects: getAllProjectsReducer,
         getProjectStats: getProjectStatsReducer,
+        pushNotification: pushNotificationReducer
     },
 })
 
