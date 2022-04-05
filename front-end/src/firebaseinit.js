@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import {initializeApp} from "firebase/app";
-import { getMessaging, getToken } from "firebase/messaging";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,19 +21,24 @@ export const app = initializeApp(firebaseConfig);
 
 const messaging = getMessaging();
 
-export async function getFCMToken() {
+export const getNewToken = async (setTokenFound) => {
+    let currentToken = '';
     try {
-        const token = await getToken(messaging, {vapidKey: "BM3xp8F4L0kUC6zPoFdYwwaWpiIpqYq4RJAmeuNaiSeSMAf-B8SfjyIcOO1wryz3gMh_qqk5H6-4llJmR4e53gI"});
-        return token;
+      currentToken = await getToken(messaging,{vapidKey: "BM3xp8F4L0kUC6zPoFdYwwaWpiIpqYq4RJAmeuNaiSeSMAf-B8SfjyIcOO1wryz3gMh_qqk5H6-4llJmR4e53gI"});
+      if (currentToken) {
+        setTokenFound(true);
+      } else {
+        setTokenFound(false);
+      }
     } catch (error) {
-        console.log('Error: FCM key', error);
-        return undefined;
+      console.log('An error occurred while retrieving token.', error);
     }
-}
+    return currentToken;
+  };
 
 export const onMessageListener = () => {
-    new Promise((resolve)=>{
-        messaging.onMessage((payload)=>{
+    return new Promise((resolve)=>{
+        onMessage(messaging, (payload)=>{
             resolve(payload);
         });
     });
