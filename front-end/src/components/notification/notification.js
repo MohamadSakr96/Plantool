@@ -27,31 +27,31 @@ export const Notification = () => {
         }
       }, [update_data]);
 
-    const handleAccept = async (event) => {
+    const handleAccept = async (user_id) => {
         try {
             await axios.post( ACCEPT_REQUEST_URL, {
-                _id: event.target.id
+                _id: user_id
             },{
                 headers: {
                     "x-access-token": user.accessToken
                 }
             });
-            setUpdateData(true);
+            setUpdateData(state => !state);
         } catch (error) {
             console.log(error.message);
         }
     };
 
-    const handleReject = async (event) => {
+    const handleReject = async (user_id) => {
         try {
             await axios.post( REJECT_REQUEST_URL, {
-                _id: event.target.id
+                _id: user_id
             },{
                 headers: {
                     "x-access-token": user.accessToken
                 }
             });
-            setUpdateData(true);
+            setUpdateData(state => !state);
         } catch (error) {
             console.log(error.message);
         }
@@ -68,8 +68,8 @@ export const Notification = () => {
                             <div className='container-navbar_profile-name'>{user_info["first_name"] + " " + user_info["last_name"]}</div>
                         </div>
                         <div className='notification-item_action'>
-                            <CheckIcon id={user_info["_id"]} onClick={handleAccept} style={{color: 'green'}}/>
-                            <CloseIcon id={user_info["_id"]} onClick={handleReject} style={{color: 'red'}}/>
+                            <CheckIcon onClick={()=>handleAccept(user_info["_id"])} style={{color: 'green'}}/>
+                            <CloseIcon onClick={()=>handleReject(user_info["_id"])} style={{color: 'red'}}/>
                         </div>
                     </div>;
         })}
