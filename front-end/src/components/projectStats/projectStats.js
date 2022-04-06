@@ -55,7 +55,7 @@ export const ProjectStats = (props) => {
   return (
     <div className='container-projectStats'>
       <div className='container-projectStats_title'>
-          <h1>Overall {overall} €</h1>
+          <h1>Overall {overall.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} €</h1>
       </div>
       <div className='container-projectStats_content'>
         <div className='projectStats_content-item border_bottom'>
@@ -70,7 +70,7 @@ export const ProjectStats = (props) => {
                   <div className='content-item_name'>{data[0]}</div>
                   <div className='projectStats_content-item_data'>
                     <div className='content-item_number'>{data[1]}</div>
-                    <div className='content-item_value'>{data[1]*data[2]}</div>  
+                    <div className='content-item_value'>{(data[1]*data[2]).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>  
                   </div>
                 </div>;
         })}
