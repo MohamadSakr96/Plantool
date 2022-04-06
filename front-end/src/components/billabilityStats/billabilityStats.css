@@ -45,3 +45,16 @@
     object-fit: contain;
     object-position: center;
 }
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+	font-size: 14px;
+	top: -12px;
+	color: #4361ee;
+}
+
+.container-billability_title > h1 {
+	position: relative;
+	z-index: 5;
+}

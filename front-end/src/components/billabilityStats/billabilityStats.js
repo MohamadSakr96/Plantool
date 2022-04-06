@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './billabilityStats.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsersInfo } from '../../features/admin/getAllUsersInfoSlice';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 export const BillabilityStats = (props) => {
     const users_data = useSelector((state) => state.getAllUsersInfo.value);   
@@ -9,6 +10,7 @@ export const BillabilityStats = (props) => {
     const start_date = new Date(props.date[0]);
     const end_date = new Date(props.date[1]);
     const dispatch = useDispatch();
+    const [style, setStyle] = useState({display: 'none'});
 
     useEffect(() => {
         if (props) {
@@ -27,6 +29,28 @@ export const BillabilityStats = (props) => {
         }
     }, [props]);
 
+    const show = () => {
+        console.log("HI");
+        setStyle({
+            display: 'block',
+            backgroundColor: '#e2e6fd',
+            textAlign: 'center',
+            padding: '10px',
+            margin: '0',
+            fontSize: '14px',
+            boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+            borderRadius: '10px',
+
+            position: 'absolute',
+            right: '10px',
+            top: '35px',
+            zIndex: '1',
+        });
+    };
+
+    const hide = () => {
+        setStyle({display: 'none'});
+    };
     
     const numberOfDays = (endDate, startDate) => {    
         [startDate, endDate] = checkDate(startDate, endDate);
@@ -84,7 +108,17 @@ export const BillabilityStats = (props) => {
     return (
         <div className='container-billability'>
             <div className='container-billability_title'>
-                <h1>Overall {billability} %</h1>
+                <h1>
+                    Overall {billability} %
+                    <QuestionMarkIcon 
+                    onMouseEnter={show}
+                    onMouseLeave={hide} 
+                    className='tooltip' fontSize='10px'/>
+                    <span style={style}>(# of days staffed )/
+                                        (# of workdays [excluding
+                                        weekends]– vacations
+                                        taken)</span>
+                </h1>
             </div>
             <div className='container-billability_content'>
                 {users_data.map((data, index) => {
