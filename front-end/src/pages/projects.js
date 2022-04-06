@@ -80,7 +80,7 @@ export const Projects = () => {
                   <TableCell align="center">{data["client"]}</TableCell>
                   <TableCell align="center">{data["type"]}</TableCell>
                   <TableCell align="center">{data["duration"]}</TableCell>
-                  <TableCell align="center">{data["value"]}</TableCell>
+                  <TableCell align="center">{data["value"]?data["value"].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","):"N/A"}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
