@@ -17,24 +17,24 @@ const firebaseConfig = {
 };
 // BM3xp8F4L0kUC6zPoFdYwwaWpiIpqYq4RJAmeuNaiSeSMAf-B8SfjyIcOO1wryz3gMh_qqk5H6-4llJmR4e53gI
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
 
-const messaging = getMessaging();
+const firebaseApp = initializeApp(firebaseConfig);
+const messaging = getMessaging(firebaseApp);
 
-export const getNewToken = async (setTokenFound) => {
+export const getNewToken = async () => {
     let currentToken = '';
     try {
       currentToken = await getToken(messaging,{vapidKey: "BM3xp8F4L0kUC6zPoFdYwwaWpiIpqYq4RJAmeuNaiSeSMAf-B8SfjyIcOO1wryz3gMh_qqk5H6-4llJmR4e53gI"});
       if (currentToken) {
-        setTokenFound(true);
+        console.log(currentToken, 'true');
       } else {
-        setTokenFound(false);
+        console.log("Please provide a token!");
       }
     } catch (error) {
       console.log('An error occurred while retrieving token.', error);
     }
     return currentToken;
-  };
+};
 
 export const onMessageListener = () => {
     return new Promise((resolve)=>{

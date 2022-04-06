@@ -26,7 +26,7 @@ exports.register = async (req, res) => {
             title: 'Plantool',
             body: 'New User Registered!'
         },
-        token: "clMFQMQAOBWoF6XF4oSvg5:APA91bEeOxfy7Rn1cpmo4FnAdDTbcbMhnXACsWbTg5MPKQerSbMe8-ZALw0aECI4fbG7-3uSJlumA29FLzjK5TQJNn1SVptreTOZzT0gAm-Q-QzQP3GXwWe4JpJgDNOt3a_6I-rHxK2S"
+        token: "clMFQMQAOBWoF6XF4oSvg5:APA91bHrNGOawinczAPMSId2drBNMWNJo2VI_UVRsSkO5ijdON81WF0M2mTC-3r5rs9WTPN_QD-2W5BPmmt1pM_hN-sWN8gYWfr1x4hVcsqXbiP2ISA9wufbwbm7b8rooe8nbkEXjYA2"
     }
     const user = new User({
         first_name:  req.body.first_name,

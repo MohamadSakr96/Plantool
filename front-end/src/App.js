@@ -16,12 +16,15 @@ import axios from 'axios';
 import { GET_PENDING_REQUESTS_URL } from './constants';
 import { set } from './features/admin/notificationSlice';
 import { open } from './features/notification/pushNotificationSlice';
+import {getNewToken} from './firebaseinit';
 
 
 function App() {
   const [show, setShow] = useState(false);
   const [notification, setNotification]=useState({title:"",body:""});
   const user = useSelector((state) => state.auth.value);
+
+  getNewToken();
 
   const dispatch = useDispatch();
 
