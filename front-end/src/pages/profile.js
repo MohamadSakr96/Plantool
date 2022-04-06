@@ -8,6 +8,8 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { authenticate } from '../features/auth/authSlice';
 import { EMP_UPDATE_PROFILE_URL, UPDATE_PROFILE_URL } from '../constants';
+import EditIcon from '@mui/icons-material/Edit';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 
 export const Profile = () => {
@@ -104,7 +106,7 @@ export const Profile = () => {
           <div className='container-profile_information'>
             <div className='basic-information'>
               <div className='basic-information_title'>
-                <h2>Basic Information</h2>
+                <h2>Basic Information <EditIcon fontSize='small' sx={{mb:0.5}} /></h2>
               </div>
               <div className='basic-information_form'>
                 <Box sx={{ mt: 4, mr: 2, ml: 2 }}>
@@ -115,7 +117,7 @@ export const Profile = () => {
                     <Grid item xs={9}>
                     <TextField
                         fullWidth
-                        label="first name"
+                        label="First Name"
                         name="first_name"
                         autoComplete="first_name"
                         size="small"
@@ -127,7 +129,7 @@ export const Profile = () => {
                     <Grid item xs={9}>
                     <TextField
                         fullWidth
-                        label="last name"
+                        label="Last Name"
                         name="last_name"
                         autoComplete="last_name"
                         size="small"
@@ -139,7 +141,7 @@ export const Profile = () => {
                     <Grid item xs={9}>
                     <TextField
                         fullWidth
-                        label="email"
+                        label="Email"
                         name="email"
                         autoComplete="email"
                         size="small"
@@ -151,7 +153,7 @@ export const Profile = () => {
             </div>
             <div className='privacy'>
               <div className='privacy_title'>
-                <h2>Private Information </h2>
+                <h2>Private Information <EditIcon fontSize='small' sx={{mb:0.5}} /></h2>
               </div>
               <div className='privacy_form'>
               <Box sx={{ mt: 4, mr: 2, ml: 2 }}>
@@ -162,7 +164,7 @@ export const Profile = () => {
                     <Grid item xs={9}>
                     <TextField
                         fullWidth
-                        label="current password"
+                        label="Current Password"
                         name="current_password"
                         autoComplete="current_password"
                         size="small"
@@ -174,7 +176,7 @@ export const Profile = () => {
                     <Grid item xs={9}>
                     <TextField
                         fullWidth
-                        label="new password"
+                        label="New Password"
                         name="new_password"
                         autoComplete="new_password"
                         size="small"
@@ -186,7 +188,7 @@ export const Profile = () => {
                     <Grid item xs={9}>
                     <TextField
                         fullWidth
-                        label="confirm password"
+                        label="Confirm Password"
                         name="confirm_password"
                         autoComplete="confirm_password"
                         size="small"
