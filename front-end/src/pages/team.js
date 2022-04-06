@@ -16,18 +16,6 @@ import axios from 'axios';
 import { GET_ALL_USERS_URL } from '../constants';
   
 
-// // Fake data
-// function createData(id, first_name, last_name, entry_date, salary, position, vacation_days) {
-//   return { id, first_name, last_name, entry_date, salary, position, vacation_days };
-// }
-// const rows = [
-//   createData( 1, 'Mohamad', 'Sakr', '2/22/2022', 1000, 'Junior', 15),
-//   createData( 2, 'Joe', 'Rizk', '2/22/2022', 1100, 'Junior', 10),
-//   createData( 3, 'Caline', 'Yammine', '2/22/2022', 1500, 'Junior', 17),
-//   createData( 4, 'John', 'Doe', '2/22/2022', 1900, 'Senior', 5),
-//   createData( 5, 'Moo', 'Sakr', '2/22/2022', 2000, 'Senior', 20),
-// ];
-
 export const Team = () => {
   const [open, setOpen] = useState(false);
   const user= useSelector((state) => state.auth.value);
@@ -100,7 +88,7 @@ export const Team = () => {
                   <TableCell align="center">{data["first_name"]}</TableCell>
                   <TableCell align="center">{data["last_name"]}</TableCell>
                   <TableCell align="center">{data["createdAt"].split("T")[0]}</TableCell>
-                  <TableCell align="center">{data["salary"]}</TableCell>
+                  <TableCell align="center">{data["salary"]?(data["salary"]).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","):"N/A"}</TableCell>
                   <TableCell align="center">{data["position"]}</TableCell>
                   <TableCell align="center">{data["vacation_days"]}</TableCell>
                 </TableRow>
