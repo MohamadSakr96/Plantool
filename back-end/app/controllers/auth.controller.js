@@ -21,6 +21,8 @@ admin.initializeApp({
 // };
 
 exports.register = async (req, res) => {
+    const admin = await User.where("role").equals("admin").select("notification_token");
+    console.log(admin);  
     const message = {
         notification: {
             title: 'Plantool',

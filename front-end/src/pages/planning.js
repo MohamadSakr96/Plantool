@@ -7,7 +7,8 @@ import { Chart } from "react-google-charts";
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsersInfo } from '../features/admin/getAllUsersInfoSlice';
 import axios from 'axios';
-import { EMP_GET_ALL_USERS_URL, GET_ALL_USERS_URL } from '../constants';
+import { EMP_GET_ALL_USERS_URL, GET_ALL_USERS_URL, UPDATE_NOTIFICATION_TOKEN } from '../constants';
+import {getNewToken} from '../firebaseinit';
 
 const columns = [
   { type: "string", id: "Employees" },
@@ -24,19 +25,47 @@ export const Planning = () => {
   const user = useSelector((state) => state.auth.value);
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState(false);
-  
-  useEffect(async () => {
-    try {
-      if(user){
-        const res = await axios.get(user.role==="admin"? GET_ALL_USERS_URL:EMP_GET_ALL_USERS_URL, {
-          headers: {
-            "x-access-token": user.accessToken
+  const [notification_token, setNotification_token] = useState(null);
+  getNewToken().then((res)=>{
+    setNotification_token(res);
+  });
+
+  useEffect(()=>{
+    if(notification_token) {
+      async function updateNotificationToken() {
+        try {
+          await axios.post(UPDATE_NOTIFICATION_TOKEN, {
+            _id: user._id,
+            notification_token: notification_token
+          }, {
+            headers: {
+              "x-access-token": user.accessToken
+            }
           }
-        });
-        dispatch(getUsersInfo(res.data));
+        );
+        } catch (error) {
+          console.log(error.message);
+        }
       }
-    } catch (error) {
-      console.log(error.message);
+      updateNotificationToken();
+    }
+  },[notification_token]);
+
+  useEffect(() => {
+    if(user){
+      async function fetchData() {
+        try {
+          const res = await axios.get(user.role==="admin"? GET_ALL_USERS_URL:EMP_GET_ALL_USERS_URL, {
+            headers: {
+              "x-access-token": user.accessToken
+            }
+          });
+          dispatch(getUsersInfo(res.data));
+        } catch (error) {
+          console.log(error.message);
+        }
+      }
+      fetchData();
     }
   },[status]);
   

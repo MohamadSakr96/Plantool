@@ -8,6 +8,7 @@ export const EMP_GET_ALL_USERS_URL = "http://localhost:8080/api/employee/getAllU
 export const EMP_UPDATE_PROFILE_URL = "http://localhost:8080/api/employee/updateProfile";
 
 // ADMIN APIS
+export const UPDATE_NOTIFICATION_TOKEN = "http://localhost:8080/api/admin/updateNotificationToken";
 export const GET_ALL_USERS_URL = "http://localhost:8080/api/admin/getAllUsers";
 export const UPDATE_PROFILE_URL = "http://localhost:8080/api/admin/updateProfile";
 export const GET_PENDING_REQUESTS_URL = "http://localhost:8080/api/admin/pending";

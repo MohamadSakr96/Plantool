@@ -140,6 +140,19 @@ exports.createEvent = async (req, res) => {
     }
 };
 
+//Notification token
+exports.updateNotificationToken = async (req, res) => {
+    try {
+        await User.findOneAndUpdate(
+            {_id: req.body._id}, 
+            {notification_token: req.body.notification_token}
+        );
+        res.status(200).send({ message: "Notification token Saved!" });
+    } catch (e) {
+        res.status(500).send({ message: e.message });
+    }
+};
+
 // Planning page functions
 // getAllUsers
 exports.getAllUsers = async (req, res) => {

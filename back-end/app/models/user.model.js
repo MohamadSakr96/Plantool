@@ -34,7 +34,7 @@ const User = mongoose.model(
             type: Number,
             default: 20
         },
-
+        notification_token: String,
         events: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Event'

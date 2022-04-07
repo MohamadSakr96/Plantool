@@ -11,6 +11,11 @@ module.exports = function(app) {
     });
 
     // admin APIs
+    app.post(
+        "/api/admin/updateNotificationToken",
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.updateNotificationToken
+    );
     app.get(
         "/api/admin/pending",
         [authJwt.verifyToken, authJwt.isAdmin],
