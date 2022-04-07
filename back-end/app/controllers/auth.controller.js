@@ -21,14 +21,13 @@ admin.initializeApp({
 // };
 
 exports.register = async (req, res) => {
-    const admin = await User.where("role").equals("admin").select("notification_token");
-    console.log(admin);  
+    const admins = await User.where("role").equals("admin").select("notification_token");
     const message = {
         notification: {
             title: 'Plantool',
             body: 'New User Registered!'
         },
-        token: "clMFQMQAOBWoF6XF4oSvg5:APA91bHrNGOawinczAPMSId2drBNMWNJo2VI_UVRsSkO5ijdON81WF0M2mTC-3r5rs9WTPN_QD-2W5BPmmt1pM_hN-sWN8gYWfr1x4hVcsqXbiP2ISA9wufbwbm7b8rooe8nbkEXjYA2"
+        token: admins[0].notification_token
     }
     const user = new User({
         first_name:  req.body.first_name,
@@ -38,7 +37,7 @@ exports.register = async (req, res) => {
         role: "pending",
         image_path: "http://localhost:8080/images/default_profile_icon.png"
     });
-    console.log(user);
+    
     await user.save(async (err, user) => {
         if (err) {
             res.status(500).send({ message: err });
