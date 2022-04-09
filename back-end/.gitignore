@@ -12,7 +12,7 @@
 /build
 
 # secret
-# /secret       //removed for testing
+/secret       
 
 # misc
 .DS_Store
@@ -26,4 +26,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # images folder
-# /images       //removed for testing
+/images      

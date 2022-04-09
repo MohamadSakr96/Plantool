@@ -6,7 +6,7 @@ const User = require("./app/models/user.model");
 var bcrypt = require("bcryptjs");
 const Project = require("./app/models/project.model");
 const Event = require("./app/models/event.model");
-const { initial_users, initial_projects, initial_events } = require("./app/initial_data/index");
+const { initial_users, initial_projects, initial_events } = require("./app/initial_data");
 
 const app = express();
 
