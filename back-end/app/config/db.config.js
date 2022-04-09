@@ -1,7 +1,7 @@
-// Module to config database
+// Module to config database for LOCAL database
 
 module.exports = {
-    HOST: "127.0.0.1",
+    HOST: "localhost",
     PORT: 27017,
     DB: "plantool_db"
 };

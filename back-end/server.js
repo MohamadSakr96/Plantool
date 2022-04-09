@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const dbConfig = require("./app/config/db.config");
+// const dbConfig = require("./app/config/db.config");
+require("dotenv").config();
 const db = require("./app/models");
 const User = require("./app/models/user.model");
 var bcrypt = require("bcryptjs");
@@ -30,10 +31,22 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 // serving images path
 app.use('/images', express.static('images'));
 
-// connection to plantool database
+// connection to plantool database THIS IS FOR LOCAL DATABASE
+// db.mongoose
+//     .connect(
+//         `mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`
+//     )
+//     .then(() => {
+//         console.log("Successfully connected to database.");
+//         initial();
+//     })
+//     .catch(err => {
+//         console.error("Connection error", err);
+//         process.exit();
+//     });
 db.mongoose
     .connect(
-        `mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`
+        process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true }
     )
     .then(() => {
         console.log("Successfully connected to database.");
