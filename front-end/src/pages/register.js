@@ -10,6 +10,94 @@ import { REGISTER_URL } from '../constants';
 export const Register = () => {
 
     const [redirect, setRedirect] = useState(false);
+    const [input, setInput] = useState({ 
+        first_name: '',
+        last_name: '',
+        password: '',
+        password_confirmation: ''
+    });
+    const [error, setError] = useState({
+        first_name: '',
+        last_name: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
+        isValid: ''
+    });
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setInput(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+        validateInput(name, value);
+    };
+
+    const validateInput = (name, value) => {
+        if (name === "first_name" || name === "last_name"){
+            if (value.length < 2){
+                setError(prevState => ({
+                    ...prevState,
+                    [name]: "must be at least 2 letters long"
+                }));
+            }else {
+                setError(prevState => ({
+                    ...prevState,
+                    [name]: ""
+                }));
+            }
+        }
+        if (name === "email") {
+            if (!value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)){
+                setError(prevState => ({
+                    ...prevState,
+                    [name]: "email is not valid!"
+                }));
+            }else {
+                setError(prevState => ({
+                    ...prevState,
+                    [name]: ""
+                }));
+            }
+        }
+        if (name === "password") {
+            if (value.length < 8 || !value.match("^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]+$")) {
+                setError(prevState => ({
+                    ...prevState,
+                    [name]: "invalid password"
+                }));
+            }else {
+                setError(prevState => ({
+                    ...prevState,
+                    [name]: ""
+                }));
+            }
+        }
+        if (name === "password_confirmation") {
+            if (value !== input.password) {
+                setError(prevState => ({
+                    ...prevState,
+                    [name]: "wrong password"
+                }));
+            }else {
+                setError(prevState => ({
+                    ...prevState,
+                    [name]: ""
+                }));
+            }
+        }
+        if (error[name] !== '') {
+            setError(prevState => ({
+                ...prevState,
+                ["isValid"]: "not Valid"
+            }));
+        }else {
+            setError(prevState => ({
+                ...prevState,
+                ["isValid"]: ""
+            }));
+        }
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -56,6 +144,10 @@ export const Register = () => {
                         id="first_name"
                         label="First name"
                         size="small"
+                        onChange={handleChange}
+                        onBlur={handleChange}
+                        error = {Boolean(error?.first_name)}
+                        helperText = {error?.first_name}
                     />
                     </Grid>
                     <Grid item xs={6}>
@@ -67,6 +159,10 @@ export const Register = () => {
                         id="last_name"
                         label="Last name"
                         size="small"
+                        onChange={handleChange}
+                        onBlur={handleChange}
+                        error = {Boolean(error?.last_name)}
+                        helperText = {error?.last_name}
                     />
                     </Grid>
                     <Grid item xs={12}>
@@ -78,6 +174,10 @@ export const Register = () => {
                         name="email"
                         autoComplete="email"
                         size="small"
+                        onChange={handleChange}
+                        onBlur={handleChange}
+                        error = {Boolean(error?.email)}
+                        helperText = {error?.email}
                     />
                     </Grid>
                     <Grid item xs={12}>
@@ -90,6 +190,10 @@ export const Register = () => {
                         id="password"
                         autoComplete="new-password"
                         size="small"
+                        onChange={handleChange}
+                        onBlur={handleChange}
+                        error = {Boolean(error?.password)}
+                        helperText = {error?.password}
                     />
                     </Grid>
                     <Grid item xs={12}>
@@ -102,6 +206,10 @@ export const Register = () => {
                         id="password_confirmation"
                         autoComplete="new-password"
                         size="small"
+                        onChange={handleChange}
+                        onBlur={handleChange}
+                        error = {Boolean(error?.password_confirmation)}
+                        helperText = {error?.password_confirmation}
                     />
                     </Grid>
                 </Grid>
@@ -110,6 +218,7 @@ export const Register = () => {
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 1 }}
+                    disabled={Boolean(error?.isValid)}
                 >
                     Register
                 </Button>
