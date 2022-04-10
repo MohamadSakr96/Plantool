@@ -21,7 +21,7 @@ function setupCORS(req, res, next) {
         next();
     }
 }
-app.all('/*', setupCORS);
+app.use('/*', setupCORS);
 
 // parse requests
 // app.use(cors(corsOptions));

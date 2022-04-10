@@ -26,7 +26,7 @@ export const getNewToken = async () => {
     try {
       currentToken = await getToken(messaging,{vapidKey: "BM3xp8F4L0kUC6zPoFdYwwaWpiIpqYq4RJAmeuNaiSeSMAf-B8SfjyIcOO1wryz3gMh_qqk5H6-4llJmR4e53gI"});
       if (currentToken) {
-        console.log(currentToken, 'true');
+        // console.log(currentToken, 'true');
       } else {
         console.log("Please provide a token!");
       }

@@ -17,7 +17,7 @@ exports.updateProfile = async(req, res) => {
                     const buffer = Buffer.from(base64, "base64");
                     const image = `${Date.now()}`+".jpg";
                     fs.writeFileSync(`./images/${image}`, buffer);
-                    update[key] = `http://localhost:8080/images/${image}`;
+                    update[key] = `http://13.58.86.86:3000/images/${image}`;
                 }else {
                     update[key] = req.body[key];
                 }
