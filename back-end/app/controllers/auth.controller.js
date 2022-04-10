@@ -35,7 +35,7 @@ exports.register = async (req, res) => {
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8),
         role: "pending",
-        image_path: "http://localhost:8080/images/default_profile_icon.png"
+        image_path: "http://13.58.86.86:3000/images/default_profile_icon.png"
     });
     
     await user.save(async (err, user) => {

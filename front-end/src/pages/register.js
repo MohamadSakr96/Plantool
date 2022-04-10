@@ -5,10 +5,10 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Link, Navigate } from "react-router-dom";
 import axios from 'axios';
+import { REGISTER_URL } from '../constants';
 
 export const Register = () => {
 
-    const registerURL = 'http://localhost:8080/api/auth/register';
     const [redirect, setRedirect] = useState(false);
 
     const handleSubmit = (event) => {
@@ -19,7 +19,7 @@ export const Register = () => {
     };
 
     function createUser(object) {
-        axios.post(registerURL, {
+        axios.post(REGISTER_URL, {
             first_name: object.get('first_name'),  
             last_name: object.get('last_name'),  
             email: object.get('email'),
