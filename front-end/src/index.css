@@ -32,7 +32,7 @@ a {
 .border_bottom {
 	border-bottom: 1.6px dashed #cbc6c6;
 }
-.MuiFormControl-root {
+.MuiInputBase-root {
 	background-color: #4361EE14;
 }
 

@@ -38,7 +38,7 @@ export const Register = () => {
             if (value.length < 2){
                 setError(prevState => ({
                     ...prevState,
-                    [name]: "must be at least 2 letters long"
+                    [name]: "At least 2 letters long"
                 }));
             }else {
                 setError(prevState => ({
@@ -119,7 +119,10 @@ export const Register = () => {
             setRedirect(true);
         })
         .catch((err) => {
-            console.log(err);
+            setError(prevState => ({
+                ...prevState,
+                ["email"]: "email already exists!"
+            }));
         });
     }
 

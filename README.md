@@ -2,7 +2,7 @@
 
 <div align="center">
 
-> Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
+> Hello world! Plantool is an internal website for companies that wants to assign projects to their employees and track billable hours.
 
 **[PROJECT PHILOSOPHY](https://github.com/julescript/well_app#-project-philosophy) • [WIREFRAMES](https://github.com/julescript/well_app#-wireframes) • [TECH STACK](https://github.com/julescript/well_app#-tech-stack) • [IMPLEMENTATION](https://github.com/julescript/well_app#-impplementation) • [HOW TO RUN?](https://github.com/julescript/well_app#-how-to-run)**
 
@@ -13,7 +13,7 @@
 
 <img src="./readme/title2.svg"/>
 
-> Plantool is a web app for internal companies, who wants to scheduale projects and assignt it to their employees, add team members and have basic information about them, have all the data needed to easily track their employment history and track their billable hours.
+> Plantool has 2 types of user access, admin and employee, but it is mainly focused on the admin type. Admins have full access to all the menus, where they can view planning chart, employees table, projects table, and statistics related to employees and projects. Also they can edit, create and update everything related to these tools. Plantool is all you need for your company.
  
 
 ### User Stories
