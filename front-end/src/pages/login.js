@@ -14,6 +14,7 @@ export const Login = () => {
   const dispatch = useDispatch();
   const [ redirect, setRedirect ] = useState(false);
   const user = useSelector((state) => state.auth.value);
+  const [error, setError] = useState({ message: '' });
 
   useEffect(() => {
     if(redirect) {
@@ -39,7 +40,10 @@ export const Login = () => {
       setRedirect(true);
     })
     .catch((err) => {
-      console.log(err.message);
+      setError(prevState => ({
+        ...prevState,
+        ["message"]: "Error, wrong credentials!"
+      }));
     });
   }
 
@@ -65,6 +69,8 @@ export const Login = () => {
                   name="email"
                   autoComplete="email"
                   size="small"
+                  error = {Boolean(error?.message)}
+                  helperText = {error?.message}
               />
               </Grid>
               <Grid item xs={12}>
@@ -77,6 +83,8 @@ export const Login = () => {
                   id="password"
                   autoComplete="new-password"
                   size="small"
+                  error = {Boolean(error?.message)}
+                  helperText = {error?.message}
               />
               </Grid>
           </Grid>
