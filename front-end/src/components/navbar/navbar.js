@@ -13,11 +13,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { Notification } from '../notification/notification';
 import { PushNotification } from '../pushNotification/pushNotification';
+import { LOGOUT_URL } from '../../constants';
 
 
 
 export const Navbar = () => {
-  const logoutURL = "http://localhost:8080/api/auth/logout";
   let menu, notification;
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.value);
@@ -44,14 +44,18 @@ export const Navbar = () => {
 
   async function logout() {
     try {
-      await axios.post(logoutURL, {
+      await axios.post(LOGOUT_URL, {
         id: user.id
       });
       localStorage.clear();
       dispatch(forget());
       setRedirect(true);
     }catch (err) {
-      console.log(err);
+      if (err.message === "Network Error") {
+        localStorage.clear();
+        dispatch(forget());
+        setRedirect(true);
+      }
     }
   }
 
