@@ -8,6 +8,7 @@ const fs = require("fs");
 exports.updateProfile = async(req, res) => {
     try {
         const update = {};
+        console.log("In update profile ...");
         Object.keys(req.body).map((key)=>{
             if (req.body[key] !== ''){
                 if (key === 'password') {
@@ -16,20 +17,25 @@ exports.updateProfile = async(req, res) => {
                     let base64 = req.body[key].split(",")[1];
                     const buffer = Buffer.from(base64, "base64");
                     const image = `${Date.now()}`+".jpg";
+                    console.log("Before writing to images folder ...");
                     fs.writeFileSync(`./images/${image}`, buffer);
+                    console.log("After writing to images folder ...");
                     update[key] = `http://13.58.86.86:3000/images/${image}`;
                 }else {
                     update[key] = req.body[key];
                 }
             }
         });
+        console.log("Before updating user info to mongoDB ...");
         const updated_user = await User.findOneAndUpdate(
             {_id: req.body._id}, 
             update, 
             { returnDocument: 'after'}
         );
+        console.log("After updating user info to mongoDB ...");
         res.status(200).send(updated_user);
     } catch (e) {
+        console.log("catch error:", e.message);
         res.status(500).send({ message: e.message});
     }
 };
