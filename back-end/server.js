@@ -8,6 +8,7 @@ var bcrypt = require("bcryptjs");
 const Project = require("./app/models/project.model");
 const Event = require("./app/models/event.model");
 const { initial_users, initial_projects, initial_events } = require("./app/initial_data");
+const path = require('path');
 
 const app = express();
 
@@ -29,7 +30,9 @@ app.use(express.json({limit: '10mb'}));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 // serving images path
-app.use('/images', express.static('images'));
+
+var publicDir = path.join(__dirname);
+app.use(express.static(publicDir));
 
 // connection to plantool database THIS IS FOR LOCAL DATABASE
 // db.mongoose
