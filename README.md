@@ -58,7 +58,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 <br><br>
 <img src="./readme/title5.svg"/>
 
-> Uing the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
+> Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
 | Landing  | Home/Planning  |
 | -----------------| -----|
@@ -67,6 +67,10 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | Team Members  | Stats  |
 | -----------------| -----|
 | ![Team Members](https://github.com/MohamadSakr96/Plantool/blob/main/demo/Team_Page.PNG) | ![Stats](https://github.com/MohamadSakr96/Plantool/blob/main/demo/Stats_Page.PNG) |
+
+| Push Notifications Foreground| Push Notifications Background  |
+| -----------------| -----|
+| ![Foreground](https://github.com/MohamadSakr96/Plantool/blob/main/demo/Push_Notification_Foreground.gif) | ![Background](https://github.com/MohamadSakr96/Plantool/blob/main/demo/Push_Notification_Background.gif) |
 
 
 <br><br>
@@ -88,7 +92,7 @@ This is an example of how to list things you need to use the software and how to
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get a free API Key at [https://example.com](https://example.com)
+<!-- 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
@@ -100,5 +104,23 @@ _Below is an example of how you can instruct your audience on installing and set
 4. Enter your API in `config.js`
    ```js
    const API_KEY = 'ENTER YOUR API';
+   ``` -->
+  
+1. Clone the repo
+   ```sh
+   git clone https://github.com/MohamadSakr96/Plantool.git
    ```
+2. Go to front end folder
+   ```sh
+   cd front-end
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Run the app
+   ```sh
+   npm start
+   ```
+
 
